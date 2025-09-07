@@ -1,5 +1,3 @@
-package fr.ufrsciencestech.panier;
-
 public abstract class FruitSimple implements Fruit {
     /**
      * Le prix du fruit au kilo (en euros)
@@ -29,8 +27,9 @@ public abstract class FruitSimple implements Fruit {
      */
      //JML :
      //@ ensures \result == country;
-    public String getCountry(){
-	    return country;
+     @Override
+     public String getCountry(){
+	     return country;
     }
     
     //Modificateurs
