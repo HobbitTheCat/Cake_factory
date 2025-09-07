@@ -1,5 +1,3 @@
-package fr.ufrsciencestech.panier;
-
 public interface Fruit {
     /**
      * Prédicat précisant si le fruit orange est sans pépin.
@@ -14,6 +12,12 @@ public interface Fruit {
      */
     public double getPrice();       
     
+    /**
+     * Accesseur du pays d'origine du fruit
+     * @return Le pays d'origine (chaîne de caractères).
+     */
+    public String getCountry();
+     
     /**
      * Prédicat hérité de la classe Object pour comparer this et l'objet passé en paramètre.
      * On considérera que deux oranges sont équivalentes si leur origine et leur prix sont les mêmes.
