@@ -1,13 +1,15 @@
+package fr.ufrsciencestech.panier;
+
 public abstract class FruitSimple implements Fruit {
     /**
      * Le prix du fruit au kilo (en euros)
      */	
-    protected double price;
+    protected double prix_au_kilo;
     
     /**
      * Le pays d'origine du fruit
      */	
-    protected String country;
+    protected String pays_origine;
     
     //Accesseurs
     /**
@@ -15,10 +17,10 @@ public abstract class FruitSimple implements Fruit {
      * @return La valeur du prix.
      */
      //JML :
-     //@ ensures \result == price;
+     //@ ensures \result == prix_au_kilo;
     @Override
-    public double getPrice(){
-	    return price;
+    public double getPrix(){
+	    return prix_au_kilo;
     }
     
     /**
@@ -26,10 +28,10 @@ public abstract class FruitSimple implements Fruit {
      * @return Le pays d'origine (chaîne de caractères).
      */
      //JML :
-     //@ ensures \result == country;
+     //@ ensures \result == pays_origine;
      @Override
-     public String getCountry(){
-	     return country;
+     public String getOrigine(){
+	     return pays_origine;
     }
     
     //Modificateurs
@@ -38,12 +40,12 @@ public abstract class FruitSimple implements Fruit {
      * @param price Le nouveau prix.
      */
      //JML :
-     //@ ensures this.price > 0;
-    public void setPrice(double price){
-	      if(price < 0)
-	        this.price = -price;  //une solution possible pour interdire les prix negatifs
+     //@ ensures this.prix_au_kilo > 0;
+    public void setPrix(double prix){
+	      if(prix < 0)
+	        this.prix_au_kilo = -prix;  //une solution possible pour interdire les prix negatifs
 	      else
-	        this.price = price;
+	        this.prix_au_kilo = prix;
     }
  
     /**
@@ -51,32 +53,39 @@ public abstract class FruitSimple implements Fruit {
      * @param country La nouvelle origine (pays).
      */
      //JML :
-     //@ requires country != null && !country.equals("");
-     //@ ensures country.equals(this.country)
-    public void setCountry(String country){
-	      this.country=country;
+     //@ requires origine != null && !origine.equals("");
+     //@ ensures origine.equals(this.pays_origine)
+    public void setOrigine(String origine){
+	      this.pays_origine=origine;
     }
     
     /**
      * Méthode utilisée dans les constructeurs des fruits (classes non abstraites)
+     * @param prix
+     * @param origine
      */	
-    protected void initAttributes(double price, String country){
-        if(price < 0){   //interdire de créer un fruit ayant un prix au kilo négatif
-            this.price = -price;  //ou = 0
+    protected void initAttributs(double prix, String origine){
+        if(prix < 0){   //interdire de créer un fruit ayant un prix au kilo négatif
+            this.prix_au_kilo = -prix;  //ou = 0
             //ou throw new Exception();
             //ou gestion avec JML
 	      } 
 	      else
-            this.price = price;
+            this.prix_au_kilo = prix;
             
-        this.country = country;
+        this.pays_origine = origine;
     }
     
+    /**
+     * Prédicat d'équivalence entre deux fruits simples
+     * @param o L'objet avec lequel comparer this
+     * @return true si o et this sont équivalents
+     */
     @Override
     public boolean equals(Object o){
         if(o != null && getClass() == o.getClass()){
             FruitSimple fs = (FruitSimple) o;
-            return (price == fs.price && country.equals(fs.country));
+            return (prix_au_kilo == fs.prix_au_kilo && pays_origine.equals(fs.pays_origine));
         }
         return false;
     }
@@ -87,5 +96,5 @@ public abstract class FruitSimple implements Fruit {
     }
 
     @Override
-    public abstract boolean isSeedless();
+    public abstract boolean estSansPepin();
 }

@@ -1,22 +1,24 @@
+package fr.ufrsciencestech.panier;
+
 public interface Fruit {
     /**
      * Prédicat précisant si le fruit orange est sans pépin.
      * Pour simplifier, on considère que ce fruit aura toujours des pépins.
      * @return false car l'orange n'est pas sans pépin (elle en a)
      */
-    public boolean isSeedless();  //predicat indiquant si le fruit a ou non des pepins
+    public boolean estSansPepin();  //predicat indiquant si le fruit a ou non des pepins
     
     /**
      * Accesseur du prix du fruit au kilo (en euros).
      * @return La valeur du prix.
      */
-    public double getPrice();       
+    public double getPrix();       
     
     /**
      * Accesseur du pays d'origine du fruit
      * @return Le pays d'origine (chaîne de caractères).
      */
-    public String getCountry();
+    public String getOrigine();
      
     /**
      * Prédicat hérité de la classe Object pour comparer this et l'objet passé en paramètre.
