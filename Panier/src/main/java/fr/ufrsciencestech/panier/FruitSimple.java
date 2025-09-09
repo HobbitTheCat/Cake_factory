@@ -1,5 +1,10 @@
 package fr.ufrsciencestech.panier;
 
+/**
+ * Classe FruitSimple servant à définir des attributs et méthodes communs à tous les fruits simples
+ * @author roudet
+ *  
+ */
 public abstract class FruitSimple implements Fruit {
     /**
      * Le prix du fruit au kilo (en euros)
@@ -37,7 +42,7 @@ public abstract class FruitSimple implements Fruit {
     //Modificateurs
     /**
      * Modificateur du prix de l'orange.
-     * @param price Le nouveau prix.
+     * @param prix Le nouveau prix.
      */
      //JML :
      //@ ensures this.prix_au_kilo > 0;
@@ -50,7 +55,7 @@ public abstract class FruitSimple implements Fruit {
  
     /**
      * Modificateur du pays d'origine du fruit
-     * @param country La nouvelle origine (pays).
+     * @param origine La nouvelle origine (pays).
      */
      //JML :
      //@ requires origine != null && !origine.equals("");

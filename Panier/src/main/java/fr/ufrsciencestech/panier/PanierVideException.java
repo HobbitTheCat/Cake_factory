@@ -1,7 +1,7 @@
 package fr.ufrsciencestech.panier;
 
 /**
- *
+ * Classe d'Exception personnalisée : lorsqu'un panier est vide
  * @author roudet
  */
 public class PanierVideException extends Exception {

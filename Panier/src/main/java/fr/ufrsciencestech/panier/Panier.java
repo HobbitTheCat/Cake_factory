@@ -2,10 +2,8 @@ package fr.ufrsciencestech.panier;
 
 import java.util.*;
 /**
- *
+ * Classe Panier stockant et gérant un ensemble de fruits (oranges, bananes, ...). Chaque panier possède une contenance maximale. 
  * @author roudet
- *
- * Classe stockant et gérant un ensemble de fruits (oranges, bananes, ...). Chaque panier possède une contenance maximale. 
  *  
  */
 public class Panier {
