@@ -101,7 +101,7 @@
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>
-                            <mainClass>fr.ufrsciencestech.panier.TestMVC</mainClass>
+                            <mainClass>fr.ufrsciencestech.panier.Panier</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
