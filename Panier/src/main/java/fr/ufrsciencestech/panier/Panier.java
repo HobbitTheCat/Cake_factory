@@ -47,15 +47,14 @@ public class Panier {
      * @return La liste de fruits.
      */
     public ArrayList<Fruit> getFruits() {  
-       return null;  //à modifier
+       return fruits;
     }
-
     /**
      * Modificateur de la liste des fruits.
      * @param fruits La nouvelle liste de fruits.
      */
     public void setFruits(ArrayList<Fruit> fruits) { 
-        //à compléter
+        this.fruits = fruits;
     }
 
     /**
@@ -63,7 +62,7 @@ public class Panier {
      * @return Le nombre de fruits présents dans le panier.
      */
     public int getNbFruits(){  
-      return 0;  //à modifier
+      return fruits.size();
     }
     
     /**
@@ -71,7 +70,7 @@ public class Panier {
      * @return La contenance maximal du panier.
      */
     public int getContenanceMax(){  
-	    return 0;  //à modifier
+	    return this.contenanceMax;
     }
 
     /**
@@ -80,7 +79,7 @@ public class Panier {
      * @return Le fruit à l'emplacement n°i ou "null" s'il n'y a rien à cet emplacement
      */
     public Fruit getFruit(int i){  
-	    return null;   //à modifier
+	    return this.fruits.get(i);
     }
     
     /**
@@ -90,7 +89,7 @@ public class Panier {
      * @param f Le nouveau fruit à remplacer.
      */
     public void setFruit(int i, Fruit f){  
-          //à compléter
+          this.fruits.set(i, f);
     }
     
     /**
