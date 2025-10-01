@@ -34,7 +34,7 @@ public class Panier {
     @Override
     public String toString(){  
         String s = "Le panier contient : ";
-        for(int i = 0; i < this.contenanceMax; i++) //parcourt la liste de fruits du panier
+        for(int i = 0; i < this.fruits.size(); i++) //parcourt la liste de fruits du panier
         {
             s += fruits.get(i).toString();          //écrit la description des fruits
             s += "\n";
