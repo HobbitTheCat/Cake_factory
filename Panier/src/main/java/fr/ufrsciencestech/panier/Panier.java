@@ -97,8 +97,8 @@ public class Panier {
      * Prédicat testant si le panier est vide
      * @return 
      */ 
-    public boolean estVide(){  
-	    return false;  //à modifier
+    public boolean estVide(){
+	    return fruits.isEmpty();  
     }
     
     /**
@@ -106,7 +106,7 @@ public class Panier {
      * @return 
      */ 
     public boolean estPlein(){  
-	    return false;  //à modifier
+	    return fruits.size()== this.contenanceMax; 
     }
 
     /**
