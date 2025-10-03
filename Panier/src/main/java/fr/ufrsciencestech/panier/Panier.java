@@ -115,7 +115,7 @@ public class Panier {
      * @throws PanierPleinException Si le panier est plein
      */
     public void ajoute(Fruit o) throws PanierPleinException{  
-       //à compléter
+       fruits.add(o);                           //ajout d'un fruit o à la liste de fruir du panier
     }
     
     /**
