@@ -41,6 +41,7 @@ public class Banane extends FruitSimple {
             this.pays_origine=origine;
     }
 
+
     /**
      * Méthode héritée de la classe Object pour l'affichage d'une banane sous forme de chaîne de caractères.
      * @return La chaîne de caractère à afficher.
