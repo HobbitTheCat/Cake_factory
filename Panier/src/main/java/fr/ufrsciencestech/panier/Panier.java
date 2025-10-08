@@ -123,7 +123,8 @@ public class Panier {
      * @throws PanierPleinException Si le panier est plein
      */
     public void ajoute() throws PanierPleinException{
-       //à compléter
+        Orange orange = new Orange();           //creation du fruit de base
+        this.ajoute(orange);                    //appel de la fonction ajoute(Fruit o) avec le fruit par defaut
     }
 
     /**
