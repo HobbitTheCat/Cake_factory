@@ -131,7 +131,13 @@ public class Panier {
      * @throws PanierVideException Si le panier est vide
      */
     public void retrait() throws PanierVideException{ 
-         //à compléter
+         if (!this.estVide())
+         {
+             int last_fruit = fruits.size() - 1;
+             fruits.remove(last_fruit);
+         }
+         else 
+             throw new PanierVideException();
     }
 
     /**
