@@ -24,8 +24,8 @@ public class Panier {
      * @param contenanceMax La contenance maximale
      */	
     public Panier(int contenanceMax) {
-	      this.fruits = new ArrayList<>();
-          this.contenanceMax = contenanceMax;
+        this.fruits = new ArrayList<>();
+        this.contenanceMax = contenanceMax;
     }
 
     /**
@@ -160,12 +160,13 @@ public class Panier {
 	    return 0;  //à modifier
     }
 
-    private void removeFruit(int index) {
+    private void removeFruit(int index) throws PanierVideException {
         if (index >= 0 && index < this.fruits.size()) {
             this.fruits.remove(index);
             for (int i = index; i < this.fruits.size() - 1; i++) {
                 this.fruits.set(i, this.fruits.get(i+1));
             }
+            this.retrait();
         }
     }
 
@@ -173,7 +174,7 @@ public class Panier {
      * Méthode qui supprime du panier tous les fruits provenant du pays origine indiqué en paramètre
      * @param origine Le pays d'origine à boycotter
      */
-    public void boycotteOrigine(String origine){ 
+    public void boycotteOrigine(String origine) throws PanierVideException {
 	    for (int i = 0; i < this.fruits.size(); i++) {
             if (this.fruits.get(i).getOrigine().equals(origine))
                 this.removeFruit(i);
