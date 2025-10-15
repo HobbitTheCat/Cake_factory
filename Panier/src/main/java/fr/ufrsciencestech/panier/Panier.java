@@ -52,13 +52,13 @@ public class Panier {
     /**
      * Modificateur de la liste des fruits.
      * @param fruits La nouvelle liste de fruits.
+     * @throws PanierPleinException
      */
-    public void setFruits(ArrayList<Fruit> fruits){
-        try{
-            if(this.getContenanceMax() >= fruits.size())
-                this.fruits = fruits;
-        }
-        catch(Exception e){throw e;}
+    public void setFruits(ArrayList<Fruit> fruits) throws PanierPleinException {
+        if(this.getContenanceMax() >= fruits.size())
+            this.fruits = fruits;
+        else 
+            throw new PanierPleinException();
     }
 
     /**
