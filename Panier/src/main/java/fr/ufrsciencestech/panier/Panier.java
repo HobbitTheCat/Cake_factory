@@ -16,15 +16,16 @@ public class Panier {
     /**
      * Nombre maximum d'oranges que peut contenir le panier
      */	
-    private int contenanceMax;     
+    private final int contenanceMax;
 	
     //méthodes à écrire 
     /**
      * Initialise un panier vide en précisant sa contenance maximale.
      * @param contenanceMax La contenance maximale
      */	
-    public Panier(int contenanceMax){  
-	      //à compléter
+    public Panier(int contenanceMax) {
+	      this.fruits = new ArrayList<>();
+          this.contenanceMax = contenanceMax;
     }
 
     /**
@@ -32,14 +33,13 @@ public class Panier {
      * @return La chaîne de caractère à afficher.
      */
     @Override
-    public String toString(){  
-        String s = "Le panier contient : ";
-        for(int i = 0; i < this.fruits.size(); i++) //parcourt la liste de fruits du panier
-        {
-            s += fruits.get(i).toString();          //écrit la description des fruits
-            s += "\n";
+    public String toString() {
+        StringBuilder s = new StringBuilder("Le panier contient : ");
+        for (Fruit fruit : this.fruits) {//parcourt la liste de fruits du panier
+            s.append(fruit.toString());          //écrit la description des fruits
+            s.append("\n");
         }
-        return s;
+        return s.toString();
     }
     
     /**
@@ -52,7 +52,6 @@ public class Panier {
     /**
      * Modificateur de la liste des fruits.
      * @param fruits La nouvelle liste de fruits.
-     * @throws PanierPleinException
      */
     public void setFruits(ArrayList<Fruit> fruits) throws PanierPleinException {
         if(this.getContenanceMax() >= fruits.size())
@@ -160,13 +159,25 @@ public class Panier {
     public double getPrix(){  
 	    return 0;  //à modifier
     }
-    
+
+    private void removeFruit(int index) {
+        if (index >= 0 && index < this.fruits.size()) {
+            this.fruits.remove(index);
+            for (int i = index; i < this.fruits.size() - 1; i++) {
+                this.fruits.set(i, this.fruits.get(i+1));
+            }
+        }
+    }
+
     /**
      * Méthode qui supprime du panier tous les fruits provenant du pays origine indiqué en paramètre
      * @param origine Le pays d'origine à boycotter
      */
     public void boycotteOrigine(String origine){ 
-	    //à compléter
+	    for (int i = 0; i < this.fruits.size(); i++) {
+            if (this.fruits.get(i).getOrigine().equals(origine))
+                this.removeFruit(i);
+        }
     }  
           
     /**
