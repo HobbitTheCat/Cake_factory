@@ -53,8 +53,12 @@ public class Panier {
      * Modificateur de la liste des fruits.
      * @param fruits La nouvelle liste de fruits.
      */
-    public void setFruits(ArrayList<Fruit> fruits) { 
-        this.fruits = fruits;
+    public void setFruits(ArrayList<Fruit> fruits){
+        try{
+            if(this.getContenanceMax() >= fruits.size())
+                this.fruits = fruits;
+        }
+        catch(Exception e){throw e;}
     }
 
     /**
@@ -79,7 +83,10 @@ public class Panier {
      * @return Le fruit à l'emplacement n°i ou "null" s'il n'y a rien à cet emplacement
      */
     public Fruit getFruit(int i){  
-	    return this.fruits.get(i);
+	    if(i >= 0 && i < this.getContenanceMax())
+                return this.fruits.get(i);
+            else
+                throw new IndexOutOfBoundsException();
     }
     
     /**
