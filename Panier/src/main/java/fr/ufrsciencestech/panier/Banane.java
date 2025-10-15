@@ -6,8 +6,7 @@ public class Banane extends FruitSimple {
      */	
      //JML :
      //@ ensures this.prix_au_kilo != null && this.pays_origine != null;
-    public Banane() 
-    {
+    public Banane() {
         this.prix_au_kilo = 0.5;  //prix en euros
         this.pays_origine = "Cameroun";
     }
@@ -19,8 +18,7 @@ public class Banane extends FruitSimple {
      */
      //JML :
      //@ ensures this.prix_au_kilo > 0 && !this.pays_origine.equals("");
-    public Banane(double prix, String origine) 
-    {
+    public Banane(double prix, String origine) {
 	      initAttributs(prix, origine);
 	      if(origine.equals(""))
             this.pays_origine="Cameroun";  //Cameroun par défaut  

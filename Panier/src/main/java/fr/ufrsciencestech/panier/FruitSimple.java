@@ -40,10 +40,8 @@ public abstract class FruitSimple implements Fruit {
     }
     
     //Modificateurs
-    /**
-     * Modificateur du prix de l'orange.
-     * @param prix Le nouveau prix.
-     */
+    /*** Modificateur du prix de l'orange.
+     * @param prix Le nouveau prix.*/
      //JML :
      //@ ensures this.prix_au_kilo > 0;
     public void setPrix(double prix){
