@@ -96,7 +96,10 @@ public class Panier {
      * @param f Le nouveau fruit à remplacer.
      */
     public void setFruit(int i, Fruit f){  
-          this.fruits.set(i, f);
+          if(i>=0 && i<=this.fruits.size())
+              this.fruits.set(i, f);
+          else
+              throw new IndexOutOfBoundsException();
     }
     
     /**
