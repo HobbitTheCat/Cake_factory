@@ -24,8 +24,10 @@ public class Panier {
      * @param contenanceMax La contenance maximale
      */	
     public Panier(int contenanceMax) {
-        this.fruits = new ArrayList<>();
-        this.contenanceMax = contenanceMax;
+        if (contenanceMax >= 0) {
+            this.contenanceMax = contenanceMax;
+            this.fruits = new ArrayList<>();
+        } else throw new IllegalArgumentException();
     }
 
     /**
@@ -167,7 +169,7 @@ public class Panier {
                 this.fruits.set(i, this.fruits.get(i+1));
             }
             this.retrait();
-        }
+        } else throw new IndexOutOfBoundsException();
     }
 
     /**
