@@ -67,7 +67,7 @@ public class Panier {
      * @return Le nombre de fruits présents dans le panier.
      */
     public int getNbFruits(){  
-      return fruits.size();
+      return this.fruits.size();
     }
     
     /**
@@ -162,13 +162,9 @@ public class Panier {
 	    return 0;  //à modifier
     }
 
-    private void removeFruit(int index) throws PanierVideException {
+    private void removeFruit(int index) {
         if (index >= 0 && index < this.fruits.size()) {
             this.fruits.remove(index);
-            for (int i = index; i < this.fruits.size() - 1; i++) {
-                this.fruits.set(i, this.fruits.get(i+1));
-            }
-            this.retrait();
         } else throw new IndexOutOfBoundsException();
     }
 
@@ -176,8 +172,8 @@ public class Panier {
      * Méthode qui supprime du panier tous les fruits provenant du pays origine indiqué en paramètre
      * @param origine Le pays d'origine à boycotter
      */
-    public void boycotteOrigine(String origine) throws PanierVideException {
-	    for (int i = 0; i < this.fruits.size(); i++) {
+    public void boycotteOrigine(String origine) {
+	    for (int i = this.getNbFruits() - 1; i >= 0; i--) {
             if (this.fruits.get(i).getOrigine().equals(origine))
                 this.removeFruit(i);
         }
