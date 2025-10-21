@@ -159,7 +159,13 @@ public class Panier {
      * @return Le prix du panier
      */
     public double getPrix(){  
-	    return 0;  //à modifier
+	  
+        double prix = 0;
+      
+        for (int i=0;i<getNbFruits();i++){
+            prix += this.getFruit(i).getPrix();
+        }
+        return prix;
     }
 
     private void removeFruit(int index) {
