@@ -30,6 +30,14 @@ public class Panier {
         } else throw new IllegalArgumentException();
     }
 
+
+    public Panier() {
+    
+        this.contenanceMax = 10;
+        this.fruits = new ArrayList<>();
+    }
+
+
     /**
      * Méthode héritée de la classe Object pour l'affichage de ce qui est contenu dans le panier : liste des fruits presents.
      * @return La chaîne de caractère à afficher.
