@@ -36,7 +36,7 @@ public class Framboise extends FruitSimple {
     }
  
     /**
-     * Modificateur de l'origine de l'Framboise.
+     * Modificateur de l'origine de la Framboise.
      * @param origine La nouvelle origine (pays) de la Framboise
      */
      //JML :
@@ -85,39 +85,4 @@ public class Framboise extends FruitSimple {
     public boolean estSansPepin() {  //predicat indiquant qu'une Framboise n'a pas de pepins
         return true;
     }
-
-
-    /**
-     * Cette méthode est le point d'entrée de notre programme.
-     * Elle servira aux tests, avant d'avoir abordé les tests unitaires.
-     * @param args
-     */
-    public static void main (String[] args){
-        //Ecrire ici vos tests
-	System.out.println("premier test Framboise");
-        
-        Framboise fEs = new Framboise(0.90,"Espagne");
-        Framboise fIt = new Framboise(1.50,"Italie");
-        Framboise fFr = new Framboise();
-        Framboise fFr2 = new Framboise(-1.00,"");  //test du constructeur avec un prix negatif et une origine à ""
-        
-        //tests de la methode toString() :
-        System.out.println("fEs : " + fEs);
-        System.out.println("fIt : " + fIt);
-        System.out.println("fFr : " + fFr);
-        System.out.println("fFr2 : " + fFr2);
-        
-        //tests de la methode equals() et de setPrice() :
-        System.out.println("fFr et fFr2 sont équivalentes, ce que démontre la méthode equals qui retourne : " + fFr.equals(fFr2));
-        fFr2.setPrix(0.60);
-        System.out.println("après le changement, fFr et fFr2 ne sont plus équivalentes, ce que confirme la méthode equals qui retourne : " + fFr.equals(fFr2));
-        
-        //tests de la methode setPrice() avec un prix negatif :
-        fEs.setPrix(-0.60);
-        System.out.println("fEs : " + fEs);
-        
-        //tests de la methode setCountry() avec une origine à "" :
-        fEs.setOrigine("");
-        System.out.println("fEs : " + fEs);
-   }
 }
