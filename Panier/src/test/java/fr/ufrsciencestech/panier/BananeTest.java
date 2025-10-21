@@ -8,14 +8,14 @@ public class BananeTest extends TestCase {
         Banane b1 = new Banane(0.5,"france");
         b1.setOrigine("BananeLand");
         assertEquals("BananeLand", b1.pays_origine);
-        assertFalse("france".equals(b1.pays_origine));
+        assertFalse("france".equals(b1.getOrigine()));
 
     }
 
     public void testTestToString() {
         Banane b = new Banane();
         assertEquals("Banane de Cameroun a 0.5 euros", b.toString());
-        b.pays_origine = "BananeLand";
+        b.setOrigine("BananeLand");
         assertFalse("Banane de Cameroun a 0.5 euros".equals(b.toString()));
     }
 
