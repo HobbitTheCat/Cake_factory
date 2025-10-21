@@ -8,12 +8,15 @@ public class BananeTest extends TestCase {
         Banane b1 = new Banane(0.5,"france");
         b1.setOrigine("BananeLand");
         assertEquals("BananeLand", b1.pays_origine);
+        assertFalse("france".equals(b1.pays_origine));
 
     }
 
     public void testTestToString() {
         Banane b = new Banane();
         assertEquals("Banane de Cameroun a 0.5 euros", b.toString());
+        b.pays_origine = "BananeLand";
+        assertFalse("Banane de Cameroun a 0.5 euros".equals(b.toString()));
     }
 
     public void testTestEquals() {
@@ -24,17 +27,11 @@ public class BananeTest extends TestCase {
         assertFalse(b1.equals(b3));
     }
 
+
+
     public void testEstSansPepin() {
         Banane b = new Banane();
         assertTrue(b.estSansPepin());
 
-    }
-
-    public void testMain() {
-        testEstSansPepin();
-        testSetOrigine();
-        testTestEquals();
-        testTestToString();
-		
     }
 }
