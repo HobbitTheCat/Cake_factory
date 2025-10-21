@@ -7,7 +7,7 @@ public class BananeTest extends TestCase {
     public void testSetOrigine() {
         Banane b1 = new Banane(0.5,"france");
         b1.setOrigine("BananeLand");
-        assertEquals("BananeLand", b1.pays_origine);
+        assertEquals("BananeLand", b1.getOrigine());
         assertFalse("france".equals(b1.getOrigine()));
 
     }
