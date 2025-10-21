@@ -19,7 +19,7 @@ public class OrangeTest extends TestCase {
     public void testSetOrigine() {
         Orange o1 = new Orange(0.30, "Espagne");
         o1.setOrigine("France");
-        assertEquals("France", o1.pays_origine);
+        assertEquals("France", o1.getOrigine());
     }
 
     /*
@@ -41,29 +41,29 @@ public class OrangeTest extends TestCase {
     public void testEquals_True() {
         Orange o = new Orange(0.2, "Portugal");
         Orange o1 = new Orange(0.2, "Portugal");
-        assertEquals(o, o1);
+        assertTrue(o.equals(o1));
     }
     @Test
-    public void testEquals_PixDiff() {
+    public void testEquals_PrixDiff() {
         Orange o = new Orange(0.2, "Portugal");
         Orange o1 = new Orange(0.3, "Portugal");
-        assertNotEquals(o, o1);
+        assertFalse(o.equals(o1));
     }
     @Test
     public void testEquals_NomDiff() {
         Orange o = new Orange(0.2, "Portugal");
         Orange o1 = new Orange(0.2, "France");
-        assertNotEquals(o, o1);
+        assertFalse(o.equals(o1));
     }
     @Test
     public void testEquals_Null() {
         Orange o = new Orange(0.2, "Portugal");
-        assertNotEquals(o, null);
+        assertFalse(o.equals(null));
     }
     @Test
     public void testEquals_LuiMeme() {
         Orange o = new Orange(0.2, "Portugal");
-        assertEquals(o, o);
+        assertTrue(o.equals(o));
     }
 
     /*
