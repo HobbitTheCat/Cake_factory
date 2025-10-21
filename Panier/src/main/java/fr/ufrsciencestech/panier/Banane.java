@@ -84,32 +84,4 @@ public class Banane extends FruitSimple {
      * Elle servira aux tests, avant d'avoir abordé les tests unitaires.
      * @param args
      */
-    public static void main (String[] args){
-        //Ecrire ici vos tests
-	System.out.println("premier test Banane");
-	      
-	Banane bFr = new Banane(0.50,"France");
-        Banane bBr = new Banane(0.60,"Bresil");
-        Banane bCa = new Banane();
-        Banane bCa2 = new Banane(-0.50,"");  //test du constructeur avec un prix negatif et une origine à ""
-        
-        //tests de la methode toString() :
-        System.out.println("bFr : " + bFr);
-        System.out.println("bBr : " + bBr);
-        System.out.println("bCa : " + bCa);
-        System.out.println("bCa2 : " + bCa2);
-        
-        //tests de la methode equals() et de setPrice() :
-        System.out.println("bCa et bCa2 sont équivalentes, ce que démontre la méthode equals qui retourne : " + bCa.equals(bCa2));
-        bCa2.setPrix(0.60);
-        System.out.println("après le changement, bCa et bCa2 ne sont plus équivalentes, ce que confirme la méthode equals qui retourne : " + bCa.equals(bCa2));
-        
-        //tests de la methode setPrice() avec un prix negatif :
-        bFr.setPrix(-0.60);
-        System.out.println("bFr : " + bFr);
-        
-        //tests de la methode setCountry() avec une origine à "" :
-        bFr.setOrigine("");
-        System.out.println("bFr : " + bFr);
-   }
 }
