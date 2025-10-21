@@ -90,6 +90,7 @@ public class Panier {
                 throw new IndexOutOfBoundsException();
     }
     
+    
     /**
      * Modificateur du fruit stocké dans le panier à l'emplacement n°i : 
      * le remplacer par f (s'il y a bien dejà un fruit à cet emplacement, ne rien faire sinon)
@@ -159,7 +160,13 @@ public class Panier {
      * @return Le prix du panier
      */
     public double getPrix(){  
-	    return 0;  //à modifier
+        
+        double prix = 0;
+        
+        for (int i=0;i<getNbFruits();i++){
+            prix += this.getFruit(i).getPrix();
+        }
+	return prix ;
     }
 
     private void removeFruit(int index) {
@@ -178,6 +185,11 @@ public class Panier {
                 this.removeFruit(i);
         }
     }  
+    
+    public boolean rechercheFruit(Fruit f){
+        
+        return false;
+    }
           
     /**
      * Prédicat hérité de la classe Object pour comparer this et l'objet passé en paramètre.
@@ -187,12 +199,18 @@ public class Panier {
      */ 
     @Override
     public boolean equals(Object o){  
-        return false;    //à modifier
+        if(o != null && getClass() == o.getClass()){
+            Panier p2 = (Panier) o;
+            if(getContenanceMax() == p2.getContenanceMax() || getNbFruits() == p2.getNbFruits()){
+                //this.getFruits().sort(());
+                // Bon courage...
+                for(int j=0;j<getNbFruits();j++){
+                    
+                }
+            }
+        }
+        return false;
+        
     }
-    
-    //tests POUR TOUS
-    public static void main (String[] args){
-	      System.out.println("premier test Panier");
-	      //à compléter
-    }
+ 
 }
