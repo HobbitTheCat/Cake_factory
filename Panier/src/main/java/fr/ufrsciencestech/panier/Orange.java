@@ -77,38 +77,4 @@ public class Orange extends FruitSimple {
         return false;
     }
 
-
-    /**
-     * Cette méthode est le point d'entrée de notre programme.
-     * Elle servira aux tests, avant d'avoir abordé les tests unitaires.
-     * @param args
-     */
-    public static void main (String[] args){
-        //Ecrire ici vos tests
-	System.out.println("premier test Orange");
-        
-        Orange oFr = new Orange(0.50,"France");
-        Orange oIt = new Orange(0.60,"Italie");
-        Orange oEs = new Orange();
-        Orange oEs2 = new Orange(-0.50,"");  //test du constructeur avec un prix negatif et une origine à ""
-        
-        //tests de la methode toString() :
-        System.out.println("oFr : " + oFr);
-        System.out.println("oIt : " + oIt);
-        System.out.println("oEs : " + oEs);
-        System.out.println("oEs2 : " + oEs2);
-        
-        //tests de la methode equals() et de setPrice() :
-        System.out.println("oEs et oEs2 sont équivalentes, ce que démontre la méthode equals qui retourne : " + oEs.equals(oEs2));
-        oEs2.setPrix(0.60);
-        System.out.println("après le changement, oEs et oEs2 ne sont plus équivalentes, ce que confirme la méthode equals qui retourne : " + oEs.equals(oEs2));
-        
-        //tests de la methode setPrice() avec un prix negatif :
-        oFr.setPrix(-0.60);
-        System.out.println("oFr : " + oFr);
-        
-        //tests de la methode setCountry() avec une origine à "" :
-        oFr.setOrigine("");
-        System.out.println("oFr : " + oFr);
-   }
 }

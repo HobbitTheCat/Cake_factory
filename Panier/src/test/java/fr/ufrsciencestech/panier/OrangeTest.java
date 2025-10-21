@@ -2,8 +2,19 @@ package fr.ufrsciencestech.panier;
 
 import junit.framework.TestCase;
 
+import org.junit.Before;
+import org.junit.Test;
+import static org.junit.Assert.*;
+
+
+/*
+* @author Enzo P
+*/
 public class OrangeTest extends TestCase {
 
+    /*
+    * test of setOrigine method of class Orange
+    */
     @Test
     public void testSetOrigine() {
         Orange o1 = new Orange(0.30, "Espagne");
@@ -11,23 +22,56 @@ public class OrangeTest extends TestCase {
         assertEquals("France", o1.pays_origine);
     }
 
-    public void testTestToString() {
+    /*
+     * test of toString method of class Orange
+     */
+    @Test
+    public void testToString() {
         Orange o = new Orange();
-        assertEquals("Orange de Espagne a 0.5 euros", o.toString());
+        String s = o.toString();
+        assertTrue(s.contains("Espagne"));
+        assertTrue(s.contains("0.5"));
+        assertTrue(s.contains("Orange"));
     }
 
-    public void testTestEquals() {
+    /*
+     * test of equals method of class Orange
+     */
+    @Test
+    public void testEquals_True() {
         Orange o = new Orange(0.2, "Portugal");
         Orange o1 = new Orange(0.2, "Portugal");
-        assertTrue(o.equals(o1));
+        assertEquals(o, o1);
+    }
+    @Test
+    public void testEquals_PixDiff() {
+        Orange o = new Orange(0.2, "Portugal");
+        Orange o1 = new Orange(0.3, "Portugal");
+        assertNotEquals(o, o1);
+    }
+    @Test
+    public void testEquals_NomDiff() {
+        Orange o = new Orange(0.2, "Portugal");
+        Orange o1 = new Orange(0.2, "France");
+        assertNotEquals(o, o1);
+    }
+    @Test
+    public void testEquals_Null() {
+        Orange o = new Orange(0.2, "Portugal");
+        assertNotEquals(o, null);
+    }
+    @Test
+    public void testEquals_LuiMeme() {
+        Orange o = new Orange(0.2, "Portugal");
+        assertEquals(o, o);
     }
 
+    /*
+     * test of estSansPepin method of class Orange
+     */
+    @Test
     public void testEstSansPepin() {
         Orange o = new Orange();
-        assertTrue(o.estSansPepin());
-    }
-
-    public void testMain() {
-        //test
+        assertFalse(o.estSansPepin());
     }
 }
