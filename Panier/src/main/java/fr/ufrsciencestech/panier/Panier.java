@@ -198,19 +198,33 @@ public class Panier {
      * @return Le résultat de la comparaison entre this et o (true si les deux sont équivalents, false sinon)
      */ 
     @Override
-    public boolean equals(Object o){  
+    public boolean equals(Object o){
         if(o != null && getClass() == o.getClass()){
             Panier p2 = (Panier) o;
-            if(getContenanceMax() == p2.getContenanceMax() || getNbFruits() == p2.getNbFruits()){
-                //this.getFruits().sort(());
-                // Bon courage...
-                for(int j=0;j<getNbFruits();j++){
-                    
+            if(this.getContenanceMax() == p2.getContenanceMax() || this.getNbFruits() == p2.getNbFruits()) {
+                //copie de la liste p2 pour la comparaison
+                ArrayList<Fruit> cpyP2 = p2.getFruits()
+                //test de l'égalitédes fuits
+                int j = 0;
+                boolean eq = true;
+                for(int i = 0; i < this.getNbFruits(); i++){
+                    j = 0;
+                    while (eq) {
+                        if (j >= cpyP2.size()) {
+                            return false;
+                        }
+                        if (this.get(j).equals(cpyP2.get(j))) {
+                            cpyP2.remove(j);
+                            eq = false;
+                        } else {
+                            j++;
+                        }
+                    }
                 }
+                return true;
             }
         }
         return false;
-        
     }
  
 }
