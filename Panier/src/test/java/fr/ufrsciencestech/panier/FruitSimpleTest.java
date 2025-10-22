@@ -57,8 +57,8 @@ public abstract class FruitSimpleTest {
     @Test
     public void testSetOrigine() {
         FruitSimple fs = createFruit(1.0, "Espagne");
-        fs.setOrigine("Maroc");
-        assertEquals("Maroc", fs.getOrigine());
+        fs.setOrigine("Italie");
+        assertEquals("Italie", fs.getOrigine());
     }
 
     /**
