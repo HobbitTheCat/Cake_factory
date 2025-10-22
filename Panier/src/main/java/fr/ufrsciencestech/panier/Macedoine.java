@@ -34,8 +34,9 @@ public class Macedoine implements Fruit{
 
     public String toString(){
         StringBuilder macedoine = new StringBuilder();
+        macedoine.append("Macedoine de:\n");
         for (Fruit fruit : this.fruits) {
-            macedoine.append(fruit.toString());
+            macedoine.append(" ").append(fruit.toString()).append("\n");
         }
         return macedoine.toString();
     }
