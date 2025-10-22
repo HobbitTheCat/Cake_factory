@@ -209,19 +209,23 @@ public class Panier {
     public boolean equals(Object o){
         if(o != null && getClass() == o.getClass()){
             Panier p2 = (Panier) o;
-            if(this.getContenanceMax() == p2.getContenanceMax() || this.getNbFruits() == p2.getNbFruits()) {
+            if(this.getContenanceMax() == p2.getContenanceMax() && this.getNbFruits() == p2.getNbFruits()) {
                 //copie de la liste p2 pour la comparaison
-                ArrayList<Fruit> cpyP2 = p2.getFruits()
+                ArrayList<Fruit> cpyP2 = new ArrayList<>;
+                    for (int i = 0; i < p2.getNbFruits(); i++) {
+                        cpyP2.add(p2.get(i));
+                    }
                 //test de l'égalitédes fuits
                 int j = 0;
                 boolean eq = true;
                 for(int i = 0; i < this.getNbFruits(); i++){
                     j = 0;
+                    eq = true;
                     while (eq) {
                         if (j >= cpyP2.size()) {
                             return false;
                         }
-                        if (this.get(j).equals(cpyP2.get(j))) {
+                        if (this.get(i).equals(cpyP2.get(j))) {
                             cpyP2.remove(j);
                             eq = false;
                         } else {
