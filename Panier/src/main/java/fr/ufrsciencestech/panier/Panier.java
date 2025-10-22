@@ -1,5 +1,6 @@
 package fr.ufrsciencestech.panier;
 
+import java.beans.PropertyChangeListener;
 import java.util.*;
 /**
  * Classe Panier stockant et gérant un ensemble de fruits (oranges, bananes, ...). Chaque panier possède une contenance maximale. 
@@ -44,7 +45,7 @@ public class Panier {
      */
     @Override
     public String toString() {
-        StringBuilder s = new StringBuilder("Le panier contient : ");
+        StringBuilder s = new StringBuilder("Le panier contient : \n");
         for (Fruit fruit : this.fruits) {//parcourt la liste de fruits du panier
             s.append(fruit.toString());          //écrit la description des fruits
             s.append("\n");
@@ -207,6 +208,6 @@ public class Panier {
     //tests POUR TOUS
     public static void main (String[] args){
 	      System.out.println("premier test Panier");
-	      //à compléter
+              
     }
 }
