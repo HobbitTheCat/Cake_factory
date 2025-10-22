@@ -30,6 +30,14 @@ public class Panier {
         } else throw new IllegalArgumentException();
     }
 
+
+    public Panier() {
+    
+        this.contenanceMax = 10;
+        this.fruits = new ArrayList<>();
+    }
+
+
     /**
      * Méthode héritée de la classe Object pour l'affichage de ce qui est contenu dans le panier : liste des fruits presents.
      * @return La chaîne de caractère à afficher.
@@ -160,13 +168,13 @@ public class Panier {
      * @return Le prix du panier
      */
     public double getPrix(){  
-        
+	  
         double prix = 0;
-        
+      
         for (int i=0;i<getNbFruits();i++){
             prix += this.getFruit(i).getPrix();
         }
-	return prix ;
+        return prix;
     }
 
     private void removeFruit(int index) {

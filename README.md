@@ -1,93 +1,248 @@
-# GLPanier
+# Git Memo V2
+
+## Table des matières
+
+- [En bref, comment nous travaillons](#en-bref-comment-nous-travaillons)
+- [Règles de l'équipe](#regles-de-lequipe)
+- [Mise à jour de votre branche](#mise-à-jour-de-votre-branche-à-partir-de-main)
+- [Commits](#commits)
+- [Nommage des branches](#nommage-des-branches)
+- [Branches](#passage-dune-branche-à-lautre)
+- [Conflits](#conflits)
+- [Demande de fusion](#demande-de-fusion)
+- [Ce qui ne doit pas figurer dans le `commit`](#ce-qui-ne-doit-pas-figurer-dans-le-commit)
 
 
+## En bref, comment nous travaillons
+1. Avant de commencer [voir Mise à jour de votre branche](#mise-à-jour-de-votre-branche-à-partir-de-main)
+	- `git switch main` ← passer à main
+	- `git pull --rebase` ← récupérer les modifications
+2. Nouvelle tâche - nouvelle branche [voir Branches](#passage-dune-branche-à-lautre)
+	- `git switch -c feature/login-form` ← création d'une nouvelle branche et passage à celle-ci
+3. Nous apportons des modifications →  `commit` par petites portions [voir Commits](#commits)
+	- `git status`
+	- `git add <files>`
+	- `git commit -m "feature/login-form: Ajouté le marquage du formulaire d'entrée"`
+	- `git push -u origin feature/login-form`
+4. Mettre à jour sa branche si `main` a pris de l'avance ou avant la demande de fusion  [voir Mise à jour de la branche](#mise-à-jour-de-votre-branche-à-partir-de-main)
+	- `git switch main && git pull --rebase`
+	- `git switch feature/login-form`
+	- `git rebase main`
+	- En cas de [conflits](#conflits), corrigez les fichiers, puis : `git add .` → `git rebase --continue`
+5. Merge uniquement via Merge Request [voir Merge Request](#demande-de-fusion)
+	- Avant Merge Request, mettez à jour votre branche 
 
-## Getting started
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+## Regles de l'equipe
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+1. `main` protégé : modification uniquement via Merge Request
+2. Une tâche - une branche - un Merge Request
+3. D'abord `pull`, puis travailler. **Nous commençons chaque jour par** `git pull --rebase` dans `main`
+4. Ne mélangez pas le refactoring et la fonctionnalité/correction dans une seule demande de fusion.
+5. Ne `push` pas dans les branches d'autres personnes sans accord préalable.
 
-## Add your files
-
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/topics/git/add_files/#add-files-to-a-git-repository) or push an existing Git repository with the following command:
-
+## Mise à jour de votre branche à partir de `main`
 ```
-cd existing_repo
-git remote add origin https://gitlabvigan.iem/roudet/glpanier.git
-git branch -M main
-git push -uf origin main
+git switch main
+git pull --rebase
+git switch feature/<name>
+git rebase main
+# en cas de conflits : corriger les fichiers → git add . → git rebase --continue
 ```
+##### Que font les commandes ?
+`git switch main` - passer vers `main`
+`git pull --rebase` - mise à jour de la branche locale `main` afin qu'elle corresponde à la branche distante
+Après cela, notre `main` locale est la plus récente, mais la branche de travail `feature/login-form` n'a pas été mise à jour automatiquement.
+`git switch feature/login-form`
+`git rebase main`
+Ces commandes tirent les commits vers la dernière version de `main`.
 
-## Integrate with your tools
+Autrement dit, **les deux étapes sont nécessaires** : la première pour que votre `main` soit à jour, la seconde pour que votre branche « rattrape » cette dernière version de `main`.
 
-- [ ] [Set up project integrations](https://gitlabvigan.iem/roudet/glpanier/-/settings/integrations)
+Cela permettra d'éviter les conflits.
 
-## Collaborate with your team
+## Commits
 
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Set auto-merge](https://docs.gitlab.com/user/project/merge_requests/auto_merge/)
+### Format du message
+`<Nom de la branche> : <En bref, ce qui a été fait>`
+#### Exemples :
+- `« feature/login-form : ajout du balisage du formulaire de connexion »`
+- `« refactor/auth : transfert de la vérification du jeton vers le middleware »`
+- `« test/cart : ajout d'un test pour la suppression d'un produit »`
 
-## Test and Deploy
+### Règles
+- Un commit = une modification logique
 
-Use the built-in continuous integration in GitLab.
+### Commandes utiles
+`git add <FILES>` # ajoute des fichiers
+`git status` # affiche ce qui a été ajouté dans l'add actuel
+`git reset` # annule le commit
+`git commit -m "<Nom-de-la-branche> : <En bref, ce qui a été fait>"`
+`git push -u origin <Nom-de-la-branche> # envoie vers le dépôt distant`
 
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing (SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
+## Nommage des branches
+- Branche principale - `main` (protégée, personne ne peut la modifier directement)
+- À partir de `main`, nous créons une branche pour la tâche. Espaces → `-`
+```
+feature/<feature-name> # pour ajouter une fonctionnalité
+fix/<bug-desc> # pour corriger un bug
+refactor/<scope> # pour refactoriser sans modifier les fonctions
+docs/<target> # pour la documentation
+chore/<task> # pour les scripts, les configurations, CI
+test/<scope> # pour les tests nouveaux/réécrits
+```
+[voir Branches](#passage-dune-branche-à-lautre)
 
-***
+## Passage d'une branche à l'autre
+[voir Nommage des branches](#nommage-des-branches)
 
-# Editing this README
+`git switch main` # passer à la branche principale
+`git switch -c feature/<name>` # créer une nouvelle branche et y passer 
+`git branch feature/<name>` # créer une nouvelle branche sans y passer
+`git switch feature/<name>` # passer à une branche existante
 
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thanks to [makeareadme.com](https://www.makeareadme.com/) for this template.
+#### Commandes utiles
+`git branch` # affiche la liste des branches locales
+`git branch -a` # affiche la liste de toutes les branches
+`git branch --show-current` # affiche la branche actuelle
 
-## Suggestions for a good README
+#### Création d'une branche (problème de localisation)
+[voir Nommage des branches](#nommage-des-branches)
 
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
+`git switch -c feature/<name>` # création d'une nouvelle branche et passage à celle-ci
+Tant que vous ne l'avez pas poussée, la branche n'existe que localement chez vous. Effectuez le premier push.
+`git push -u origin feature/<name>`
+- `-u` mémorisera la connexion « branche locale ↔ origin/feature/\<name> » , puis vous pourrez simplement utiliser `git push` / `git pull`
 
-## Name
-Choose a self-explaining name for your project.
+Que fait le partenaire pour voir et passer à la branche
+1. Mettre à jour la liste des branches à partir du serveur
+`git fetch origin`
+2. Passer à la branche en créant une branche locale qui la suit
+`git switch --track origin/feature/<name>`
+\# ou plus court (git comprendra tout seul après fetch) :
+`git switch feature/<name>`
 
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
+#### Que faire si une branche superflue a été créée ?
+1. Si la branche est vide, essayer `git branch -d feature/<name>`
+2. Si quelque chose se trouve dans la branche mais que vous devez tout de même la supprimer, essayez `git branch -D feature/<name>`.
 
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
+### Comment travailler à deux sur une même branche (non recommandé)
+- À chaque fois avant de commencer à travailler :
+`git pull --rebase`
+- Répéter régulièrement `git pull --rebase` afin de récupérer les modifications apportées par votre partenaire.
 
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
+## Conflits
 
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
+### Comment réduire les risques de conflits
+- Commencez la journée avec `git pull --rebase` dans `main`
+- Créez de petites branches avec MR, un bloc logique à la fois
+- Ne touchez pas au code des autres sans synchronisation
+- Si possible, une personne, une branche
 
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
+### Comment résoudre un conflit
+##### 0. Comprendre l'opération en cours
+	git status
+Vous verrez : _« You are currently merging/rebasing »_ — ceci est important pour choisir la bonne commande « continuer/revenir en arrière ».
+##### 1. Voir ce qui est en conflit
+	git status
+	git diff --name-only --diff-filter=U # uniquement les fichiers en conflit
+##### 2. Ouvrir les fichiers en conflit et comprendre
+À l'intérieur, vous verrez des marqueurs :
+```
+<<<<<<< HEAD # « notre » version (branche actuelle lors de la fusion)...
+nos modifications ...
+=======...
+leurs modifications ...
+>>>>>>> feature/other # « leur » version (branche fusionnée)
+```
+##### 3. Prendre une décision pour chaque conflit
+- Conserver le nôtre (`--ours`)
+- Conserver le leur (`--theirs`)
+- Fusionner manuellement (meilleure option)
+##### 4. Marquer le fichier comme résolu
+Après les modifications, supprimez `<<<<<<< ======= >>>>>>>`, enregistrez le fichier et :
+`git add <file>`
+##### 5. Continuer l'opération
+`git merge --continue`
+`git rebase --continue`
+##### 6. Répéter pour tous les conflits
+##### 7. Pousser les modifications
+- Après **rebase**, l'historique est réécrit, donc `git push --force-with-lease`
+**Uniquement si la branche a déjà été poussée. Informez l'équipe afin que personne ne perde son travail**
+- Après **merge**, il suffit généralement de `git push`
 
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
+### Commandes utiles
+`git checkout --ours path/to/file` # prendre notre version du fichier
+`git checkout --theirs path/to/file` # prendre leur version du fichier
+### Comment annuler l'opération si tout ne s'est pas passé comme prévu
+`git merge --abort`
+`git rebase --abort`
 
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
 
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
+## Demande de fusion
 
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
+1. Ouvrir une demande de fusion dans GitLab
+	- Accédez au référentiel sur GitLab → onglet Demandes de fusion → Nouvelle demande de fusion
+	- Sélectionnez :
+		- Branche source = `feature/<name>`
+		- Branche cible = `main`
+2. Remplissez la demande de fusion
+	- Titre : en bref, « quoi et où » (`llogin-form : balisage + validation de l'adresse e-mail`)
+	- Description
+		- Ce qui a été fait
+		- Comment vérifier
+		- Y a-t-il des risques/particularités
+3. Désigner un réviseur (au minimum Semenov Egor)
+4. Avant la fusion, mettre à jour la branche [voir Mise à jour de votre branche](#mise-à-jour-de-votre-branche-à-partir-de-main)
+5. Attendre l'approbation
 
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
+### Important à savoir
+- Une demande de fusion est toujours liée à une branche
+- Si vous ajoutez de nouveaux commits à la même branche, GitLab met automatiquement à jour la MR.
+- N'ouvrez pas de nouvelle demande de fusion, utilisez celle qui a déjà été créée
 
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
+## Ce qui ne doit pas figurer dans le `commit`
+```
+# Compiled class file
+*.class
 
-## License
-For open source projects, say how it is licensed.
+# Log file
+*.log
 
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+# BlueJ files
+*.ctxt
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# Files from IDE 
+.idea/
+```
+Après avoir exécuté `git add .`, vérifiez que les fichiers superflus n'ont pas été ajoutés à l'aide de `git status` et, si c'est le cas, exécutez soit `git reset` , soit `git reset <filename>`.
+
+
+
+## Comment ce document a été créé (exemple de processus de travail)
+```
+git switch main # passage à main
+git pull --rebase # obtention des dernières modifications
+git branch # vérification des branches existantes
+git switch -c docs/git-memo # création d'une nouvelle branche et passage à celle-ci
+git branch # vérification de la création de la branche et du passage à celle-ci
+
+git add GIT_MEMO.md # ajouté le fichier
+git status # vérifié que rien de superflu n'avait été ajouté
+git commit -m "docs/git-memo: Ajout de conseils pour travailler avec git" # commit avec le commentaire approprié
+git push -u origin docs/git-memo # envoyé les modifications au serveur
+```
+Dans GitLab, j'ai ouvert une MR, rempli les informations nécessaires et ajouté un réviseur.
+La modification a été intégrée dans `main`.
