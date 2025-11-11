@@ -1,6 +1,9 @@
 package fr.ufrsciencestech.panier;
+import fr.ufrsciencestech.panier.Model.Fruit;
+import fr.ufrsciencestech.panier.Model.Panier;
+import fr.ufrsciencestech.panier.Model.PanierPleinException;
+import fr.ufrsciencestech.panier.Model.PanierVideException;
 import org.junit.*;
-import org.mockito.ArgumentCaptor;
 
 import java.util.ArrayList;
 

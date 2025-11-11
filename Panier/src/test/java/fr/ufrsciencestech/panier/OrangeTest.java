@@ -1,10 +1,9 @@
 package fr.ufrsciencestech.panier;
 
+import fr.ufrsciencestech.panier.Model.Orange;
 import junit.framework.TestCase;
 
-import org.junit.Before;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 
 /*
