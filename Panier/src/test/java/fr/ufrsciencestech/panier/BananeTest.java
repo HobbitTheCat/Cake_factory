@@ -1,5 +1,6 @@
 package fr.ufrsciencestech.panier;
 
+import fr.ufrsciencestech.panier.Model.Banane;
 import junit.framework.TestCase;
 
 public class BananeTest extends TestCase {

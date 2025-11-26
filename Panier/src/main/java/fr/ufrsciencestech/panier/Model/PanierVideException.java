@@ -1,4 +1,4 @@
-package fr.ufrsciencestech.panier;
+package fr.ufrsciencestech.panier.Model;
 
 /**
  * Classe d'Exception personnalisée : lorsqu'un panier est vide

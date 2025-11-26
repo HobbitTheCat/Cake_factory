@@ -2,7 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package fr.ufrsciencestech.panier;
+package fr.ufrsciencestech.panier.View;
+
+import fr.ufrsciencestech.panier.Controller.Controleur;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
