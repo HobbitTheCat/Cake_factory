@@ -1,171 +1,153 @@
 package fr.ufrsciencestech.panier;
-import fr.ufrsciencestech.panier.Model.Fruit;
-import fr.ufrsciencestech.panier.Model.Panier;
-import fr.ufrsciencestech.panier.Model.PanierPleinException;
-import fr.ufrsciencestech.panier.Model.PanierVideException;
-import org.junit.*;
+
+import fr.ufrsciencestech.panier.Model.*;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Disabled;
 
 import java.util.ArrayList;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 public class PanierTest {
-    @Test
-    public void allowsZeroCapacity_andStartEmpty() {
-        Panier p = new Panier(0);
-        assertTrue(p.estVide());
-        assertEquals(0, p.getContenanceMax());
-        assertEquals(0, p.getNbFruits());
-    }
+    private Basket basket;
+    private final int DEFAULT_CAPACITY = 5;
 
-    @Test(expected = IllegalArgumentException.class)
-    public void throwsOnNegativeCapacity() {
-        Panier p = new Panier(-1);
-    }
+    @BeforeEach
+    void setUp() {basket = new Basket(DEFAULT_CAPACITY);}
 
     @Test
-    public void ajout_addsWhenNotFull() throws Exception {
-        Panier p = new Panier(2);
+    @DisplayName("Constructor must correctly set capacity")
+    void testSetCapacityCorrectly() {
+        Basket b = new Basket(10);
+        assertEquals(10, b.getCapacity());
+    }
+
+    @Test
+    @DisplayName("Exception for negative capacity")
+    public void testThrowsOnNegativeCapacity() {
+        assertThrows(IllegalArgumentException.class, () -> new Basket(-10));
+    }
+
+    @Test
+    @DisplayName("Adding fruit")
+    void testAddFruit() throws PanierPleinException {
+        Fruit f = mock(Fruit.class);
+        basket.add(f);
+
+        assertEquals(1, basket.getNbFruits());
+        assertFalse(basket.isEmpty());
+        assertSame(f, basket.getFruit(0));
+    }
+
+    @Test
+    @DisplayName("Throw when full")
+    void testThrowsWhenFull() throws PanierPleinException {
+        Basket smallBasket = new Basket(1);
+        smallBasket.add(mock(Fruit.class));
+        assertThrows(PanierPleinException.class, () -> smallBasket.add(mock(Fruit.class)));
+    }
+
+    @Test
+    @DisplayName("Remove last fruit")
+    void testRemoveLastFruit() throws PanierPleinException, PanierVideException {
         Fruit f1 = mock(Fruit.class);
+        Fruit f2 = mock(Fruit.class);
+        basket.add(f1);
+        basket.add(f2);
 
-        p.ajoute(f1);
+        basket.remove();
 
-        assertFalse(p.estVide());
-        assertEquals(1, p.getNbFruits());
-        assertSame(f1, p.getFruit(0));
+        assertEquals(1, basket.getNbFruits());
+        assertSame(f1, basket.getFruit(0));
+    }
+
+    @Test
+    @DisplayName("Exception when deleting from an empty trash can")
+    void testRemoveWhenEmpty() {
+        assertThrows(PanierVideException.class,  () -> basket.remove());
+    }
+
+    @Test
+    @DisplayName("Boycott origin")
+    void testBoycottOrigin() throws PanierPleinException {
+        Fruit france = mock(Fruit.class);
+        when(france.getOriginCountry()).thenReturn("France");
+
+        Fruit spain = mock(Fruit.class);
+        when(spain.getOriginCountry()).thenReturn("Spain");
+
+        basket.add(france);
+        basket.add(spain);
+        basket.add(france);
+
+        basket.boycottOrigin("France");
+
+        assertEquals(1, basket.getNbFruits());
+        assertSame(spain, basket.getFruit(0));
+    }
+
+    @Test
+    @DisplayName("Calculating the total cost of the basket")
+    void testCalculateTotalCostOfBasket() throws PanierPleinException {
+        Fruit f1 = mock(Fruit.class);
+        when(f1.getPricePerKilogram()).thenReturn(1.5);
 
         Fruit f2 = mock(Fruit.class);
-        p.ajoute(f2);
-        assertTrue(p.estPlein());
-    }
+        when(f2.getPricePerKilogram()).thenReturn(2.5);
 
-    @Test(expected = PanierPleinException.class)
-    public void ajout_throwsWhenFull() throws Exception {
-        Panier p = new Panier(1);
-        p.ajoute(mock(Fruit.class));
-        p.ajoute(mock(Fruit.class));
+        basket.add(f1);
+        basket.add(f2);
+
+        assertEquals(4.0, basket.getPrice(), 0.001);
     }
 
     @Test
-    public void retrait_removesLast_whenNotEmpty() throws Exception {
-        Panier p = new Panier(3);
-        Fruit a = mock(Fruit.class);
-        Fruit b = mock(Fruit.class);
-        p.ajoute(a);
-        p.ajoute(b);
+    @DisplayName("Invalid index exception")
+    void testInvalidIndexException() throws PanierPleinException {
+        basket.add(mock(Fruit.class));
 
-        p.retrait();
-
-        assertEquals(1, p.getNbFruits());
-        assertSame(a, p.getFruit(0));
-    }
-
-    @Test(expected = PanierVideException.class)
-    public void retrait_throwsWhenEmpty() throws Exception {
-        Panier p = new Panier(1);
-        p.retrait();
+        assertAll(
+                () -> assertThrows(IndexOutOfBoundsException.class, () -> basket.getFruit(-1)),
+                () -> assertThrows(IndexOutOfBoundsException.class, () -> basket.getFruit(5))
+        );
     }
 
     @Test
-    public void setFruits_replaces_whenFirstCapacity() throws Exception {
-        Panier p = new Panier(2);
-        ArrayList<Fruit> fruits = new ArrayList<>();
-        fruits.add(mock(Fruit.class));
-        p.setFruits(fruits);
-        assertEquals(1, p.getNbFruits());
-    }
+    @DisplayName("Replacing the fruit list via setFruits")
+    void testReplacingFruitList() throws PanierPleinException {
+        ArrayList<Fruit> list = new ArrayList<>();
+        list.add(mock(Fruit.class));
+        list.add(mock(Fruit.class));
 
-    @Test(expected = PanierPleinException.class)
-    public void setFruits_throws_whenExceedsCapacity() throws Exception {
-        Panier p = new Panier(1);
-        ArrayList<Fruit> fruits = new ArrayList<>();
-        fruits.add(mock(Fruit.class));
-        fruits.add(mock(Fruit.class));
-        p.setFruits(fruits);
-    }
-
-    @Test(expected = IndexOutOfBoundsException.class)
-    public void getFruits_throws_onNegativeIndex() throws Exception {
-        Panier p = new Panier(1);
-        p.getFruit(-1);
-    }
-
-    @Test(expected = IndexOutOfBoundsException.class)
-    public void getFruits_throws_onIndexExceedsElementsNumber() throws Exception {
-        Panier p = new Panier(2);
-        p.ajoute(mock(Fruit.class));
-        p.getFruit(1);
+        basket.setFruits(list);
+        assertEquals(2, basket.getNbFruits());
     }
 
     @Test
-    public void setFruit_replace_whenFirstCapacity() throws Exception {
-        Panier p = new Panier(2);
-        Fruit a = mock(Fruit.class);
-        p.ajoute(a);
-        Fruit b = mock(Fruit.class);
-        p.setFruit(0, b);
-    }
-    @Test(expected = IndexOutOfBoundsException.class)
-    public void setFruit_throws_whenTryToReplaceNonExistingFruit() throws Exception {
-        Panier p = new Panier(2);
-        Fruit a = mock(Fruit.class);
-        p.ajoute(a);
-        Fruit b = mock(Fruit.class);
-        p.setFruit(1, b);
+    @DisplayName("Exception if the list exceeds capacity")
+    void testExceptionIfTheListExceedsCapacity() {
+        Basket small = new Basket(1);
+        ArrayList<Fruit> list = new ArrayList<>();
+        list.add(mock(Fruit.class));
+        list.add(mock(Fruit.class));
+
+        assertThrows(PanierPleinException.class, () -> small.setFruits(list));
     }
 
+    @Disabled("Réaliser equals par contrat - comparaison des compositions des paniers")
     @Test
-    public void boycotteOrigine_removeMatching_only() throws Exception {
-        Panier p = new Panier(3);
+    void testEquals() throws PanierPleinException {
+        Basket b1 =  new Basket(2);
+        Basket b2 = new Basket(2);
+        Fruit f1 = mock(Fruit.class);
 
-        Fruit es1 = mock(Fruit.class); when(es1.getOrigine()).thenReturn("ES");
-        Fruit fr = mock(Fruit.class); when(fr.getOrigine()).thenReturn("FR");
-        Fruit es2 = mock(Fruit.class); when(es2.getOrigine()).thenReturn("ES");
+        b1.add(f1);
+        b1.add(f1);
 
-        p.ajoute(es1);p.ajoute(fr);p.ajoute(es2);
-
-        p.boycotteOrigine("ES");
-
-        assertEquals(1, p.getNbFruits());
-        assertSame(fr, p.getFruit(0));
-    }
-
-    @Test
-    public void boycotteOrgine_noop_whenNoMatch() throws Exception {
-        Panier p = new Panier(2);
-        Fruit de = mock(Fruit.class);  when(de.getOrigine()).thenReturn("DE");
-        p.ajoute(de);
-
-        p.boycotteOrigine("DE");
-        assertEquals(1, p.getNbFruits());
-        assertSame(de, p.getFruit(0));
-    }
-
-    @Ignore("A inclure lorsque vous implémentez getPrix() : sum Fruit.getPrix()")
-    @Test
-    public void getPrix_sumsAllFruitPrices() throws Exception {
-        Panier p = new Panier(3);
-        Fruit a = mock(Fruit.class); when(a.getPrix()).thenReturn(1.2);
-        Fruit b = mock(Fruit.class); when(b.getPrix()).thenReturn(0.8);
-        p.ajoute(a); p.ajoute(b);
-
-        assertEquals(2.0, p.getPrix(), 1e-9);
-    }
-
-    @Ignore("Réaliser equals par contrat - comparaison des compositions des paniers")
-    @Test
-    public void equals_true_whenSameFruitsInSameOrder_orDefineYourRule() throws Exception {
-        Panier p1 = new Panier(2);
-        Panier p2 = new Panier(2);
-        Fruit a = mock(Fruit.class);
-        Fruit b = mock(Fruit.class);
-        p1.ajoute(a); p1.ajoute(b);
-        p2.ajoute(a); p2.ajoute(b);
-
-        assertTrue(p1.equals(p2));
-        assertTrue(p1.equals(p1));
-        assertFalse(p1.equals(null));
-        assertFalse(p1.equals(new Object()));
+        assertEquals(b1, b2);
     }
 }

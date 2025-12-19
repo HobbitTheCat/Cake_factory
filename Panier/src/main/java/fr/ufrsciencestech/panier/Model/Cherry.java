@@ -1,6 +1,9 @@
 package fr.ufrsciencestech.panier.Model;
 
 public class Cherry extends SimpleFruit{
+    public Cherry(double price, String origin) {super(price, origin);}
+    public Cherry() {super();}
+
     @Override
     protected String getDefaultOrigin() {return "France";}
     @Override

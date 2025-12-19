@@ -1,8 +1,10 @@
 package fr.ufrsciencestech.panier.Model;
 
 public class Orange extends SimpleFruit {
+    public Orange(double price, String origin) {super(price, origin);}
+    public Orange() {super();}
     @Override
-    protected String getDefaultOrigin() {return "Espagne";}
+    protected String getDefaultOrigin() {return "Spain";}
     @Override
     protected double getDefaultPrice() {return 0.5;}
 
