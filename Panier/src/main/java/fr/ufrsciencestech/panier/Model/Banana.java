@@ -13,4 +13,12 @@ public class Banana extends SimpleFruit {
 
     @Override
     public boolean isSeedless() {return true;}
+    
+    public Banana() {
+        super();
+    }
+
+    public Banana(double price, String origin) {
+        super(price, origin);
+    }
 }

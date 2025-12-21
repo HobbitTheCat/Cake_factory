@@ -2,6 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
+
+
+/*
 package fr.ufrsciencestech.panier.Controller;
 
 import fr.ufrsciencestech.panier.Model.Fruit;
@@ -14,7 +17,9 @@ import java.awt.event.*;
  *
  * @author Nicolas
  */
-public class Controleur implements ActionListener {
+
+
+/*public class Controleur implements ActionListener {
 
     private ModelePanier m;
     private VueGSwing vgs;
@@ -39,4 +44,4 @@ public class Controleur implements ActionListener {
         this.vgs = vgs;
     }
 }
-
+*/

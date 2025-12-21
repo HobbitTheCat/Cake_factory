@@ -13,4 +13,13 @@ public class Cherry extends SimpleFruit{
 
     @Override
     public boolean isSeedless() {return false;}
+    
+    
+    public Cherry() {
+        super();
+    }
+
+    public Cherry(double price, String origin) {
+        super(price, origin);
+    }
 }

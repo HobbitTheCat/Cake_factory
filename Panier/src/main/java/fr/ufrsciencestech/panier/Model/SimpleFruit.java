@@ -14,7 +14,7 @@ public abstract class SimpleFruit implements Fruit {
         this.setOrigin(getDefaultOrigin());
     }
     public SimpleFruit(double price, String origin) {
-        this.setPrice(price <= 0 ? getDefaultPrice(): price);
+        this.setPrice(price <= 0 ? -price: price);
         this.setOrigin(origin == null || origin.isEmpty() ? getDefaultOrigin() : origin);
     }
 

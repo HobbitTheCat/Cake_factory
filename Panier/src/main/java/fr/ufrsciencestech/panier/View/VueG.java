@@ -2,6 +2,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
+
+/*
 package fr.ufrsciencestech.panier.View;
 
 import fr.ufrsciencestech.panier.Controller.Controleur;
@@ -13,6 +15,8 @@ import java.beans.PropertyChangeListener;
  *
  * @author Ostronix
  */
+
+/*
     public interface VueG extends PropertyChangeListener { //extends Observer {
     @Override
     public void propertyChange(PropertyChangeEvent evt);
@@ -21,3 +25,4 @@ import java.beans.PropertyChangeListener;
     
 
 }
+*/

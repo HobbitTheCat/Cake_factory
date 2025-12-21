@@ -13,5 +13,13 @@ public class Pineapple extends SimpleFruit {
 
     @Override
     public boolean isSeedless() {return true;}
+    
+    public Pineapple() {
+        super();
+    }
+
+    public Pineapple(double price, String origin) {
+        super(price, origin);
+    }
 }
 
