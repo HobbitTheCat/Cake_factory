@@ -3,7 +3,9 @@ package fr.ufrsciencestech.panier.Model;
 public abstract class LayerDecorator implements Cake{
     protected Cake cake;
 
-    public LayerDecorator(Cake cake) {this.cake = cake;}
+    public LayerDecorator(Cake cake) {
+        this.cake = cake;
+    }
 
     @Override
     public String toString() {
