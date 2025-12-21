@@ -34,8 +34,8 @@ public class CakeDecoratorTest {
 
         Cake secondLayer = new LayerDecoratorTest(firstLayer, 3.0);
 
-        assertEquals("Tarte test, avec test, avec test", layer.toString());
-        assertEquals(7.3, layer.getCost());
+        assertEquals("Tarte test, avec test, avec test", secondLayer.toString());
+        assertEquals(7.3, secondLayer.getCost());
 
         verify(mockCake, times(1)).toString();
         verify(mockCake, times(1)).getCost();
