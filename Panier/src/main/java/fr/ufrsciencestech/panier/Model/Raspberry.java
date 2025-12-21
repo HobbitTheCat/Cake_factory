@@ -18,4 +18,12 @@ public class Raspberry extends SimpleFruit {
 
     @Override
     public boolean isSeedless() {return true;}
+    
+    public Raspberry() {
+        super();
+    }
+
+    public Raspberry(double price, String origin) {
+        super(price, origin);
+    }
 }
