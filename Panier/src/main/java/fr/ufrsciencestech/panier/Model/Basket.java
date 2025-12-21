@@ -11,12 +11,12 @@ public class Basket {
     private ArrayList<Fruit> fruits;
     private final int capacity;
 
-    boolean isEmpty() {return fruits.isEmpty();}
-    boolean isFull() {return fruits.size() == capacity;}
-    int getNbFruits() {return this.fruits.size();}
-    int getCapacity() {return this.capacity;}
+    public boolean isEmpty() {return fruits.isEmpty();}
+    public boolean isFull() {return fruits.size() == capacity;}
+    public int getNbFruits() {return this.fruits.size();}
+    public int getCapacity() {return this.capacity;}
     public ArrayList<Fruit> getFruits() {return this.fruits;}
-    Fruit getFruit(int i) {
+    public Fruit getFruit(int i) {
         if (i < 0 || i >= this.getNbFruits()) throw new IndexOutOfBoundsException();
         return this.fruits.get(i);
     }
