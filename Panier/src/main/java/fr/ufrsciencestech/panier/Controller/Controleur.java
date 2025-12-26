@@ -1,17 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-
-
-/*
 package fr.ufrsciencestech.panier.Controller;
 
-import fr.ufrsciencestech.panier.Model.Fruit;
-import fr.ufrsciencestech.panier.Model.ModelePanier;
+import fr.ufrsciencestech.panier.Model.Basket;
+import java.awt.event.ActionListener;
 
-import java.awt.*;
-import java.awt.event.*;
 
 /**
  *
@@ -19,29 +10,10 @@ import java.awt.event.*;
  */
 
 
-/*public class Controleur implements ActionListener {
-
-    private ModelePanier m;
-    private VueGSwing vgs;
+public abstract class Controleur implements ActionListener{
+    protected Basket p;
     
-    public Controleur(VueGSwing vgs, ModelePanier m){
-        this.m = m;
-        this.vgs = vgs;
-    }
-    
-    @Override
-    public void actionPerformed(ActionEvent e){
-        Fruit f = vgs.getFruitCB();
-        if(((Component)e.getSource()).getName().equals("PlusCB")) 
-            m.updateP(f);
-        else
-            m.updateM(); 
-    }
-    public void setModele(ModelePanier m){
-        this.m = m;
-    }
-    public void setVue(VueGSwing vgs){
-        this.vgs = vgs;
+    public void setPanier(Basket p){
+        this.p = p;
     }
 }
-*/
