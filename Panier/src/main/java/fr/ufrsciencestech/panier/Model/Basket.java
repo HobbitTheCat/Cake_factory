@@ -45,7 +45,7 @@ public class Basket {
     public double getPrice() {
         double total = 0;
         for (int i = 0; i < this.getNbFruits(); i++) {
-            total += this.getFruit(i).getPricePerKilogram(); // TODO Je ne comprends pas comment calculer le prix. Nous ne pouvons mettre qu'un kilo de chaque fruit dans le panier.
+            total += this.getFruit(i).getPrice(); // TODO Je ne comprends pas comment calculer le prix. Nous ne pouvons mettre qu'un kilo de chaque fruit dans le panier.
         }
         return total;
     }

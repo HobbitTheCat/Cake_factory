@@ -9,11 +9,11 @@ public abstract class LayerDecorator implements Cake{
 
     @Override
     public String toString() {
-        return cake == null ? "" : cake.toString();
+        return this.cake == null ? "" : this.cake.toString();
     }
 
     @Override
     public double getCost() {
-        return cake == null ? 0 : cake.getCost();
+        return this.cake == null ? 0 : this.cake.getCost();
     }
 }

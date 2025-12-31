@@ -1,0 +1,43 @@
+package fr.ufrsciencestech.panier.Model;
+
+import java.util.ArrayList;
+
+public class Macedoine implements Fruit{
+    private final ArrayList<Fruit> fruits;
+    private String origin;
+
+    @Override
+    public String getOriginCountry() {return this.origin;}
+
+    @Override
+    public boolean isSeedless() {
+        for (Fruit fruit : this.fruits) if (!fruit.isSeedless()) return false;
+        return true;
+    }
+
+    @Override
+    public double getPrice() {
+        double price = 0;
+        for (Fruit fruit : this.fruits) price+=fruit.getPrice();
+        return price;
+    }
+
+    public void addFruit(Fruit fruit) {
+        this.fruits.add(fruit);
+    }
+
+    public Macedoine(Fruit fruit) {
+        this.fruits = new ArrayList<>();
+        this.fruits.add(fruit);
+    }
+
+    @Override
+    public String toString(){
+        StringBuilder macedoine = new StringBuilder();
+        macedoine.append("Macedoine de:\n");
+        for (Fruit fruit : this.fruits) {
+            macedoine.append(" ").append(fruit.toString()).append("\n");
+        }
+        return macedoine.toString();
+    }
+}

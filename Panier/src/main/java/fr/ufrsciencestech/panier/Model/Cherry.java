@@ -11,18 +11,9 @@ public class Cherry extends SimpleFruit{
 
     @Override
     public String toString(){
-        return "Cherry from " + this.getOriginCountry() + " cost " + this.getPricePerKilogram() + " euros/kg";
+        return "Cherry from " + this.getOriginCountry() + " cost " + this.getPrice() + " euros/kg";
     }
 
     @Override
     public boolean isSeedless() {return false;}
-    
-    
-    public Cherry() {
-        super();
-    }
-
-    public Cherry(double price, String origin) {
-        super(price, origin);
-    }
 }

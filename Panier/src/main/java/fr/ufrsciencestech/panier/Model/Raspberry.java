@@ -6,6 +6,13 @@ package fr.ufrsciencestech.panier.Model;
 
 
 public class Raspberry extends SimpleFruit {
+    public Raspberry() {
+        super();
+    }
+    public Raspberry(double price, String origin) {
+        super(price, origin);
+    }
+
     @Override
     protected String getDefaultOrigin() {return "France";}
     @Override
@@ -13,17 +20,9 @@ public class Raspberry extends SimpleFruit {
 
     @Override
     public String toString(){
-        return "Raspberry from " + this.getOriginCountry() + " cost " + this.getPricePerKilogram() + " euros/kg";
+        return "Raspberry from " + this.getOriginCountry() + " cost " + this.getPrice() + " euros/kg";
     }
 
     @Override
     public boolean isSeedless() {return true;}
-    
-    public Raspberry() {
-        super();
-    }
-
-    public Raspberry(double price, String origin) {
-        super(price, origin);
-    }
 }
