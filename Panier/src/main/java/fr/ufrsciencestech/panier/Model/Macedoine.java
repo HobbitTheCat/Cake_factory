@@ -3,7 +3,7 @@ package fr.ufrsciencestech.panier.Model;
 import java.util.ArrayList;
 
 public class Macedoine implements Fruit{
-    private final ArrayList<Fruit> fruits;
+    private final ArrayList<SimpleFruit> fruits;
     private String origin;
 
     @Override
@@ -22,11 +22,11 @@ public class Macedoine implements Fruit{
         return price;
     }
 
-    public void addFruit(Fruit fruit) {
+    public void addFruit(SimpleFruit fruit) {
         this.fruits.add(fruit);
     }
 
-    public Macedoine(Fruit fruit) {
+    public Macedoine(SimpleFruit fruit) {
         this.fruits = new ArrayList<>();
         this.fruits.add(fruit);
     }
