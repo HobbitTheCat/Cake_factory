@@ -1,22 +1,66 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package fr.ufrsciencestech.panier.View;
 
-/**
- *
- * @author Ostronix
- */
+import fr.ufrsciencestech.panier.Model.*;
+import java.io.File;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 public class ViewMenu extends javax.swing.JFrame {
 
+    static List<SimpleFruit> lst_instance = new ArrayList<>();
+    static List<String> lst_fruit = new ArrayList<>();
     /**
      * Creates new form ViewMenu
      */
     public ViewMenu() {
-        initComponents();
+        try {
+            initComponents();
+            String packageName = "fr.ufrsciencestech.panier.Model";
+            lst_fruit = findSubClasses(packageName, SimpleFruit.class);
+        } catch (Exception ex) { Logger.getLogger(ViewMenu.class.getName()).log(Level.SEVERE, null, ex);}
     }
 
+     public static List<String> findSubClasses(String packageName, Class<?> superClass) throws Exception {
+        List<String> classNames = new ArrayList<>();
+
+        String path = packageName.replace('.', '/');
+        URL resource = ClassLoader.getSystemClassLoader().getResource(path);
+        if (resource == null) {
+            throw new IllegalArgumentException("Package introuvable : " + packageName);
+        }
+
+        File directory = new File(resource.toURI());
+        scanDirectory(directory, packageName, superClass, classNames);
+
+        return classNames;
+    }
+
+    private static void scanDirectory(File directory, String packageName, Class<?> superClass, List<String> classNames) throws Exception {
+        if (!directory.exists()) return;
+
+        for (File file : directory.listFiles()) {
+            if (file.isDirectory()) {
+                // Scanner récursivement les sous-packages
+                scanDirectory(file, packageName + "." + file.getName(), superClass, classNames);
+            } else if (file.getName().endsWith(".class")) {
+                String fullClassName = packageName + "." + file.getName().replace(".class", "");
+                try {
+                    Class<?> clazz = Class.forName(fullClassName);
+                    if (superClass.isAssignableFrom(clazz) && !clazz.equals(superClass)) {
+                        // Ajouter le nom simple (sans package)
+                        classNames.add(clazz.getSimpleName());
+                    }
+                } catch (NoClassDefFoundError | ClassNotFoundException e) {
+                    // Ignorer les classes non chargeables
+                }
+            }
+        }
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -26,23 +70,12 @@ public class ViewMenu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton3 = new javax.swing.JButton();
         Binstance = new javax.swing.JButton();
         Bpanier = new javax.swing.JButton();
         Bcreation = new javax.swing.JButton();
         Bboycott = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jButton3.setBackground(new java.awt.Color(255, 0, 0));
-        jButton3.setFont(new java.awt.Font("Segoe UI Symbol", 1, 14)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("X");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
 
         Binstance.setText("Instance");
         Binstance.addActionListener(new java.awt.event.ActionListener() {
@@ -59,31 +92,36 @@ public class ViewMenu extends javax.swing.JFrame {
         });
 
         Bcreation.setText("Création");
+        Bcreation.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BcreationActionPerformed(evt);
+            }
+        });
 
         Bboycott.setText("Boycott");
+        Bboycott.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BboycottActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButton3))
             .addGroup(layout.createSequentialGroup()
                 .addGap(131, 131, 131)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(Bboycott, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(Bcreation, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)
-                        .addComponent(Binstance, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Bpanier, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(Bcreation, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)
+                    .addComponent(Binstance, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Bpanier, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(133, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jButton3)
-                .addGap(17, 17, 17)
+                .addGap(44, 44, 44)
                 .addComponent(Binstance, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(Bpanier, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -97,17 +135,21 @@ public class ViewMenu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
-
     private void BinstanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BinstanceActionPerformed
-        // TODO add your handling code here:
+        new ViewGlobal().setVisible(true);
     }//GEN-LAST:event_BinstanceActionPerformed
 
     private void BpanierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BpanierActionPerformed
-        // TODO add your handling code here:
+        new ViewBasket().setVisible(true);
     }//GEN-LAST:event_BpanierActionPerformed
+
+    private void BcreationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BcreationActionPerformed
+        new ViewFormulaire().setVisible(true);
+    }//GEN-LAST:event_BcreationActionPerformed
+
+    private void BboycottActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BboycottActionPerformed
+        new ViewBoycott().setVisible(true);
+    }//GEN-LAST:event_BboycottActionPerformed
 
     /**
      * @param args the command line arguments
@@ -149,6 +191,5 @@ public class ViewMenu extends javax.swing.JFrame {
     private javax.swing.JButton Bcreation;
     private javax.swing.JButton Binstance;
     private javax.swing.JButton Bpanier;
-    private javax.swing.JButton jButton3;
     // End of variables declaration//GEN-END:variables
 }

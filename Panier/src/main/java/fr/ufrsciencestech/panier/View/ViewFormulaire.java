@@ -28,7 +28,7 @@ public class ViewFormulaire extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         Bfruitcompose = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        Bexit = new javax.swing.JButton();
         Bfruit = new javax.swing.JButton();
         Bmacedoine = new javax.swing.JButton();
 
@@ -45,13 +45,13 @@ public class ViewFormulaire extends javax.swing.JFrame {
             }
         });
 
-        jButton4.setBackground(new java.awt.Color(255, 0, 0));
-        jButton4.setFont(new java.awt.Font("Segoe UI Symbol", 1, 14)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jButton4.setText("X");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        Bexit.setBackground(new java.awt.Color(255, 0, 0));
+        Bexit.setFont(new java.awt.Font("Segoe UI Symbol", 1, 14)); // NOI18N
+        Bexit.setForeground(new java.awt.Color(255, 255, 255));
+        Bexit.setText("X");
+        Bexit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                BexitActionPerformed(evt);
             }
         });
 
@@ -77,7 +77,7 @@ public class ViewFormulaire extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButton4))
+                .addComponent(Bexit))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -94,7 +94,7 @@ public class ViewFormulaire extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jButton4)
+                .addComponent(Bexit)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
@@ -109,20 +109,20 @@ public class ViewFormulaire extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    private void BexitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BexitActionPerformed
+        this.setVisible(false);
+    }//GEN-LAST:event_BexitActionPerformed
 
     private void BfruitcomposeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BfruitcomposeActionPerformed
-        // TODO add your handling code here:
+        new ViewCreateComposite().setVisible(true);
     }//GEN-LAST:event_BfruitcomposeActionPerformed
 
     private void BfruitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BfruitActionPerformed
-        // TODO add your handling code here:
+        new ViewCreateFruit().setVisible(true);
     }//GEN-LAST:event_BfruitActionPerformed
 
     private void BmacedoineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BmacedoineActionPerformed
-        // TODO add your handling code here:
+        new ViewCreateMacedoine().setVisible(true);
     }//GEN-LAST:event_BmacedoineActionPerformed
 
     /**
@@ -161,10 +161,10 @@ public class ViewFormulaire extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Bexit;
     private javax.swing.JButton Bfruit;
     private javax.swing.JButton Bfruitcompose;
     private javax.swing.JButton Bmacedoine;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
