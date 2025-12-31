@@ -11,17 +11,9 @@ public class Banana extends SimpleFruit {
 
     @Override
     public String toString(){
-        return "Banana from " + this.getOriginCountry() + " cost " + this.getPricePerKilogram() + " euros/kg";
+        return "Banana from " + this.getOriginCountry() + " cost " + this.getPrice() + " euros/kg";
     }
 
     @Override
     public boolean isSeedless() {return true;}
-    
-    public Banana() {
-        super();
-    }
-
-    public Banana(double price, String origin) {
-        super(price, origin);
-    }
 }

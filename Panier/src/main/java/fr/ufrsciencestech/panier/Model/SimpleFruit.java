@@ -19,7 +19,7 @@ public abstract class SimpleFruit implements Fruit {
     }
 
     @Override
-    public double getPricePerKilogram() {return this.price_kilogram;}
+    public double getPrice() {return this.price_kilogram;}
     @Override
     public String getOriginCountry() {return this.origin;}
 
@@ -34,7 +34,7 @@ public abstract class SimpleFruit implements Fruit {
         if (this == o) return true;
         if (o == null || this.getClass() != o.getClass()) return false;
         SimpleFruit other = (SimpleFruit) o;
-        return (this.getPricePerKilogram() == other.getPricePerKilogram() &&
+        return (this.getPrice() == other.getPrice() &&
                     this.getOriginCountry().equals(other.getOriginCountry()));
     }
 

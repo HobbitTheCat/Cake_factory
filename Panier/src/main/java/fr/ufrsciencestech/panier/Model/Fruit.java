@@ -2,7 +2,7 @@ package fr.ufrsciencestech.panier.Model;
 
 public interface Fruit {
      boolean isSeedless();
-     double getPricePerKilogram();
+     double getPrice();
      String getOriginCountry();
 
      @Override
