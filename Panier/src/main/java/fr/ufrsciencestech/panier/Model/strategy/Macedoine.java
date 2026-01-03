@@ -1,8 +1,11 @@
-package fr.ufrsciencestech.panier.Model;
+package fr.ufrsciencestech.panier.Model.strategy;
+
+import fr.ufrsciencestech.panier.Model.fruit.Fruit;
+import fr.ufrsciencestech.panier.Model.fruit.SimpleFruit;
 
 import java.util.ArrayList;
 
-public class Macedoine implements Fruit{
+public class Macedoine implements Fruit {
     private final ArrayList<SimpleFruit> fruits;
     private String origin;
 

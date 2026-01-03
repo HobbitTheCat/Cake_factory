@@ -1,7 +1,7 @@
 package fr.ufrsciencestech.panier;
 
-import fr.ufrsciencestech.panier.Model.Banana;
-import fr.ufrsciencestech.panier.Model.SimpleFruit;
+import fr.ufrsciencestech.panier.Model.fruit.Banana;
+import fr.ufrsciencestech.panier.Model.fruit.SimpleFruit;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

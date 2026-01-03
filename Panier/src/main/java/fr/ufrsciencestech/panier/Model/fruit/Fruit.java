@@ -1,4 +1,4 @@
-package fr.ufrsciencestech.panier.Model;
+package fr.ufrsciencestech.panier.Model.fruit;
 
 public interface Fruit {
      boolean isSeedless();

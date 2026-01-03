@@ -1,5 +1,6 @@
 package fr.ufrsciencestech.panier;
-import fr.ufrsciencestech.panier.Model.*;
+import fr.ufrsciencestech.panier.Model.cake.Cake;
+import fr.ufrsciencestech.panier.Model.cake.LayerDecorator;
 
 public class LayerDecoratorTest extends LayerDecorator {
 

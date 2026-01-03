@@ -2,6 +2,7 @@ package fr.ufrsciencestech.panier;
 
 import fr.ufrsciencestech.panier.Model.*;
 
+import fr.ufrsciencestech.panier.Model.fruit.Fruit;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.DisplayName;

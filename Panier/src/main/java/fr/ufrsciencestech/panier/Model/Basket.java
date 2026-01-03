@@ -1,5 +1,8 @@
 package fr.ufrsciencestech.panier.Model;
 
+import fr.ufrsciencestech.panier.Model.fruit.Fruit;
+import fr.ufrsciencestech.panier.Model.fruit.Orange;
+
 import java.util.*;
 /**
  * Classe Panier stockant et gérant un ensemble de fruits (oranges, bananes, ...). Chaque panier possède une contenance maximale. 

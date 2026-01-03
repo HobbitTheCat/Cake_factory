@@ -1,4 +1,5 @@
-package fr.ufrsciencestech.panier.Model;
+package fr.ufrsciencestech.panier.Model.cake;
+import fr.ufrsciencestech.panier.Model.fruit.Fruit;
 
 public class FruitLayer extends LayerDecorator {
     private final Fruit processedFruit;
