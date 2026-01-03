@@ -5,7 +5,7 @@ public class FruitLayer extends LayerDecorator {
     private final Fruit processedFruit;
 
     public FruitLayer(Cake cake, Fruit fruit) {
-        super(cake);
+        super(cake,LayerType.FRUIT);
         this.processedFruit = fruit;
     }
 

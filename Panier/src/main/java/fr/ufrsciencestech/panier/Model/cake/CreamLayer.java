@@ -5,7 +5,7 @@ public class CreamLayer extends LayerDecorator{
     private final double price;
 
     public CreamLayer(Cake cake, String cream_type, double price) {
-        super(cake);
+        super(cake,LayerType.CREAM);
         this.price = price;
         this.cream_type = cream_type;
     }

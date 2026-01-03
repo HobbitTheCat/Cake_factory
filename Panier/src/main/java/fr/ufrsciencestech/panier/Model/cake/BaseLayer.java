@@ -5,7 +5,7 @@ public class BaseLayer extends LayerDecorator{
     private final double price;
 
     public BaseLayer(Cake cake, String base_type, double price) {
-        super(cake);
+        super(cake,LayerType.BASE);
         this.base_type = base_type;
         this.price = price;
     }
