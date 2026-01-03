@@ -15,8 +15,18 @@ public class ViewGlobal extends javax.swing.JFrame {
      */
     public ViewGlobal() {
         initComponents();
+        FillTextArea();
     }
 
+    private void FillTextArea(){
+        int n = ViewMenu.lst_instance.size();
+        TAview.setText("Voici toutes les instances créer : \n");
+        for(int i =0;i<n;i++){
+            TAview.append(ViewMenu.lst_instance.get(i).toString()+"\n");
+        }
+    }
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -73,7 +83,7 @@ public class ViewGlobal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+        setVisible(false);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**

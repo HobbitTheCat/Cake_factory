@@ -1,5 +1,6 @@
 package fr.ufrsciencestech.panier.View;
 
+
 public class ViewBasket extends javax.swing.JFrame {
 
     
@@ -142,6 +143,7 @@ public class ViewBasket extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
     private void BexitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BexitActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_BexitActionPerformed
