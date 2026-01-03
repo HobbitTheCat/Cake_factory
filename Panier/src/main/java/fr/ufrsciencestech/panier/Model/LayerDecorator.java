@@ -13,7 +13,7 @@ public abstract class LayerDecorator implements Cake{
     }
 
     @Override
-    public double getCost() {
-        return this.cake == null ? 0 : this.cake.getCost();
+    public double getPrice() {
+        return this.cake == null ? 0 : this.cake.getPrice();
     }
 }

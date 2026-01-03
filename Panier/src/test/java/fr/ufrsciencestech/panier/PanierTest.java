@@ -94,10 +94,10 @@ public class PanierTest {
     @DisplayName("Calculating the total cost of the basket")
     void testCalculateTotalCostOfBasket() throws PanierPleinException {
         Fruit f1 = mock(Fruit.class);
-        when(f1.getPricePerKilogram()).thenReturn(1.5);
+        when(f1.getPrice()).thenReturn(1.5);
 
         Fruit f2 = mock(Fruit.class);
-        when(f2.getPricePerKilogram()).thenReturn(2.5);
+        when(f2.getPrice()).thenReturn(2.5);
 
         basket.add(f1);
         basket.add(f2);
