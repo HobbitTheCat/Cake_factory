@@ -9,8 +9,8 @@ public class FruitLayer extends LayerDecorator {
     }
 
     @Override
-    public double getCost() {
-        return super.getCost() + this.processedFruit.getPrice();
+    public double getPrice() {
+        return super.getPrice() + this.processedFruit.getPrice();
     }
 
     @Override

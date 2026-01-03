@@ -1,9 +1,9 @@
 package fr.ufrsciencestech.panier;
-import fr.ufrsciencestech.panier.Model;
+import fr.ufrsciencestech.panier.Model.*;
 
 public class LayerDecoratorTest extends LayerDecorator {
 
-    private double cost;
+    private final double cost;
 
     public LayerDecoratorTest(Cake pie, double cost) {
         super(pie);
@@ -11,12 +11,12 @@ public class LayerDecoratorTest extends LayerDecorator {
     }
 
     @Override
-    public String toString {
-        return super.toString + ", avec test ";
+    public String toString() {
+        return super.toString() + ", with test ";
     }
 
     @Override
-    public double getCost() {
-        return super.getCost() + this.cost;
+    public double getPrice() {
+        return super.getPrice() + this.cost;
     }
 }

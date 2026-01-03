@@ -1,9 +1,10 @@
 package fr.ufrsciencestech.panier;
-import fr.ufrsciencestech.panier.Model;
+import fr.ufrsciencestech.panier.Model.*;
 
 import org.junit.*;
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
+import org.junit.jupiter.api.Test;
 
 public class CakeDecoratorTest {
     @Test
@@ -12,15 +13,15 @@ public class CakeDecoratorTest {
         Cake mockCake = mock(Cake.class);
 
         when(mockCake.toString()).thenReturn("Tarte test");
-        when(mockCake.getCost()).thenReturn(2.0);
+        when(mockCake.getPrice()).thenReturn(2.0);
 
         LayerDecorator layer = new LayerDecoratorTest(mockCake, 2.3);
 
         assertEquals("Tarte test, avec test", layer.toString());
-        assertEquals(4.3, layer.getCost());
+        assertEquals(4.3, layer.getPrice());
 
         verify(mockCake, times(1)).toString();
-        verify(mockCake, times(1)).getCost();
+        verify(mockCake, times(1)).getPrice();
     }
 
     @Test
@@ -28,16 +29,16 @@ public class CakeDecoratorTest {
         Cake mockCake = mock(Cake.class);
 
         when(mockCake.toString()).thenReturn("Tarte test");
-        when(mockCake.getCost()).thenReturn(2.0);
+        when(mockCake.getPrice()).thenReturn(2.0);
 
         Cake firstLayer = new LayerDecoratorTest(mockCake, 2.3);
 
         Cake secondLayer = new LayerDecoratorTest(firstLayer, 3.0);
 
         assertEquals("Tarte test, avec test, avec test", secondLayer.toString());
-        assertEquals(7.3, secondLayer.getCost());
+        assertEquals(7.3, secondLayer.getPrice());
 
         verify(mockCake, times(1)).toString();
-        verify(mockCake, times(1)).getCost();
+        verify(mockCake, times(1)).getPrice();
     }
 }

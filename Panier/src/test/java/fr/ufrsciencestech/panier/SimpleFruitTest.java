@@ -15,7 +15,7 @@ public abstract class SimpleFruitTest {
     @ValueSource(doubles = {1.0, 0.5, 10, 150.5})
     public void testGetPrice(double price) {
         SimpleFruit fruit = this.createFruit(price, "France");
-        assertEquals(Math.abs(price), fruit.getPricePerKilogram(), 1e-9);
+        assertEquals(Math.abs(price), fruit.getPrice(), 1e-9);
     }
 
     @ParameterizedTest
@@ -23,7 +23,7 @@ public abstract class SimpleFruitTest {
     public void testNegativePriceCorrection(double input, double expected) {
         SimpleFruit fruit = this.createFruit(1.0, "France");
         fruit.setPrice(input);
-        assertEquals(expected, fruit.getPricePerKilogram(), 1e-9);
+        assertEquals(expected, fruit.getPrice(), 1e-9);
     }
 
     @Test

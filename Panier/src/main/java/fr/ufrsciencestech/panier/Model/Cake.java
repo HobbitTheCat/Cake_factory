@@ -1,7 +1,7 @@
 package fr.ufrsciencestech.panier.Model;
 
 public interface Cake {
-    double getCost();
+    double getPrice();
 
     @Override
     String toString();
