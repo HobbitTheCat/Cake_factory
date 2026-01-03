@@ -1,7 +1,8 @@
 package fr.ufrsciencestech.panier;
-import fr.ufrsciencestech.panier.Model.*;
 
-import org.junit.*;
+import fr.ufrsciencestech.panier.Model.cake.Cake;
+import fr.ufrsciencestech.panier.Model.cake.LayerDecorator;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 import org.junit.jupiter.api.Test;

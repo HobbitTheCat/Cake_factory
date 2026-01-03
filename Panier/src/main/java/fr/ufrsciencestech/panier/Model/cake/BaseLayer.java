@@ -1,4 +1,4 @@
-package fr.ufrsciencestech.panier.Model;
+package fr.ufrsciencestech.panier.Model.cake;
 
 public class BaseLayer extends LayerDecorator{
     private final String base_type;

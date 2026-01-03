@@ -1,4 +1,4 @@
-package fr.ufrsciencestech.panier.Model;
+package fr.ufrsciencestech.panier.Model.cake;
 
 public class CakeBuilder {
     private Cake cake;

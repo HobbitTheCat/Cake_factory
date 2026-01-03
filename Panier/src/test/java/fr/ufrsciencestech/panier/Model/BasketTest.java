@@ -2,6 +2,7 @@ package fr.ufrsciencestech.panier.Model;
 
 import java.util.ArrayList;
 
+import fr.ufrsciencestech.panier.Model.fruit.*;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;

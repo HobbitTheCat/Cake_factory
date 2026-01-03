@@ -1,5 +1,6 @@
 package fr.ufrsciencestech.panier.Model;
 
+import fr.ufrsciencestech.panier.Model.fruit.Cherry;
 import org.junit.Test;
 import static org.junit.Assert.*;
 

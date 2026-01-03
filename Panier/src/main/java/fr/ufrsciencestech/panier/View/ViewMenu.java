@@ -1,7 +1,8 @@
 
 package fr.ufrsciencestech.panier.View;
 
-import fr.ufrsciencestech.panier.Model.*;
+import fr.ufrsciencestech.panier.Model.fruit.SimpleFruit;
+
 import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;

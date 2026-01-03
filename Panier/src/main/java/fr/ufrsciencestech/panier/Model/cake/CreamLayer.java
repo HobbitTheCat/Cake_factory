@@ -1,4 +1,4 @@
-package fr.ufrsciencestech.panier.Model;
+package fr.ufrsciencestech.panier.Model.cake;
 
 public class CreamLayer extends LayerDecorator{
     private final String cream_type;

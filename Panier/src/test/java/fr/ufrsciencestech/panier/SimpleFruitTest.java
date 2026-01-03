@@ -1,6 +1,6 @@
 package fr.ufrsciencestech.panier;
 
-import fr.ufrsciencestech.panier.Model.SimpleFruit;
+import fr.ufrsciencestech.panier.Model.fruit.SimpleFruit;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
