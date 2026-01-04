@@ -29,7 +29,7 @@ public abstract class SimpleFruitTest {
     @Test
     public void testGetOrigin() {
         SimpleFruit fruit = this.createFruit(0.5, "France");
-        assertEquals("Frane", fruit.getOriginCountry());
+        assertEquals("France", fruit.getOriginCountry());
     }
 
     @Test
