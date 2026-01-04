@@ -14,7 +14,11 @@ public class CreamLayer extends LayerDecorator{
     public double getPrice() {return super.getPrice() + this.price;}
 
     @Override
+    public LayerType getLastType() {return LayerType.CREAM;}
+
+    @Override
     public String toString() {
-        return super.toString() + ", CreamLayer [" + this.cream_type + "]";
+        String s = super.toString();
+        return s.isEmpty() ? "CreamLayer [" + this.cream_type + "]" : s + ", CreamLayer [" + this.cream_type + "]";
     }
 }

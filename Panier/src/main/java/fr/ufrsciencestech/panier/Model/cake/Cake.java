@@ -5,4 +5,6 @@ public interface Cake {
 
     @Override
     String toString();
+
+    LayerType getLastType();
 }

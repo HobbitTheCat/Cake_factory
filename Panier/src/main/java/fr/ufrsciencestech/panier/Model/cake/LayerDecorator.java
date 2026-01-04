@@ -1,6 +1,6 @@
 package fr.ufrsciencestech.panier.Model.cake;
 
-public abstract class LayerDecorator implements Cake{
+public abstract class LayerDecorator implements Cake {
     protected Cake cake;
 
     public LayerDecorator(Cake cake) {
@@ -16,4 +16,7 @@ public abstract class LayerDecorator implements Cake{
     public double getPrice() {
         return this.cake == null ? 0 : this.cake.getPrice();
     }
+
+    @Override
+    public LayerType getLastType() {return this.cake == null ? LayerType.CREAM : this.cake.getLastType();};
 }
