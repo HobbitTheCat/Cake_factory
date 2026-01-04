@@ -14,9 +14,12 @@ public class CakeBuilder {
         this.cake = new BaseLayer(null, base_type, base_layer_price);
     }
 
-    public CakeBuilder addCreamLayer(String cream_type, double price) {
+    public CakeBuilder() {
+        this.cake = null;
+    }
 
-        if(this.cake.getLastType() == LayerType.TOPPING){
+    public CakeBuilder addCreamLayer(String cream_type, double price) {
+        if (this.cake != null && this.cake.getLastType() == LayerType.TOPPING){
             throw new LayerOrderException("Cream layer can't be place after Topping.");
         }
         this.cake = new CreamLayer(this.cake, cream_type, price);
@@ -24,7 +27,7 @@ public class CakeBuilder {
     }
 
     public CakeBuilder addFruitLayer(FruitStrategy strategy, SimpleFruit... fruit){
-        if(this.cake.getLastType() == LayerType.TOPPING){
+        if (this.cake != null && this.cake.getLastType() == LayerType.TOPPING){
             throw new LayerOrderException("Fruits layer can't be place after Topping.");
         }
         Fruit fruitprocesse = strategy.process(new ArrayList<>(Arrays.asList(fruit)));
@@ -33,7 +36,7 @@ public class CakeBuilder {
     }
 
     public CakeBuilder addFruitLayer(SimpleFruit fruit){
-        if(this.cake.getLastType() == LayerType.TOPPING){
+        if (this.cake != null && this.cake.getLastType() == LayerType.TOPPING){
             throw new LayerOrderException("Fruit layer can't be place after Topping.");
         }
         this.cake = new FruitLayer(this.cake, fruit);
@@ -45,7 +48,7 @@ public class CakeBuilder {
         return this;
     }
     public CakeBuilder addBaseLayer(String base_type, double price){
-        if(this.cake.getLastType() == LayerType.TOPPING){
+        if (this.cake != null && this.cake.getLastType() == LayerType.TOPPING){
             throw new LayerOrderException("Base layer can't be place after Topping.");
         }
         this.cake = new BaseLayer(this.cake, base_type, price);
@@ -53,6 +56,7 @@ public class CakeBuilder {
     }
 
     public Cake build(){
+        if (this.cake == null) throw new RuntimeException("Cake must have a layer");
         return this.cake;
     }
 }

@@ -5,7 +5,7 @@ public class FruitLayer extends LayerDecorator {
     private final Fruit processedFruit;
 
     public FruitLayer(Cake cake, Fruit fruit) {
-        super(cake,LayerType.FRUIT);
+        super(cake);
         this.processedFruit = fruit;
     }
 
@@ -15,7 +15,11 @@ public class FruitLayer extends LayerDecorator {
     }
 
     @Override
+    public LayerType getLastType() {return LayerType.FRUIT;}
+
+    @Override
     public String toString() {
-        return super.toString() + ", FruitLayer [" + this.processedFruit + "]";
+        String s = super.toString();
+        return s.isEmpty() ? "FruitLayer [" + this.processedFruit + "]" : s + ", FruitLayer [" + this.processedFruit + "]";
     }
 }

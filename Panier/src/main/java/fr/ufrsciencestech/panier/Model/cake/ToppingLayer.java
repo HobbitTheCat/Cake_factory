@@ -5,7 +5,7 @@ public class ToppingLayer extends LayerDecorator{
     private final double price;
 
     public ToppingLayer(Cake cake, String topping_type,double price){
-        super(cake, LayerType.TOPPING);
+        super(cake);
         this.price = price;
         this.topping_type = topping_type;
     }
@@ -16,7 +16,11 @@ public class ToppingLayer extends LayerDecorator{
     }
 
     @Override
+    public LayerType getLastType() {return LayerType.TOPPING;}
+
+    @Override
     public String toString(){
-        return super.toString() + ", toppingLayer["+ this.topping_type + "]" ;
+        String s = super.toString();
+        return  s.isEmpty() ? "ToppingLayer["+ this.topping_type + "]" : s + ", ToppingLayer["+ this.topping_type + "]" ;
     }
 }

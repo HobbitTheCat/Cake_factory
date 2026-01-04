@@ -5,7 +5,7 @@ public class CreamLayer extends LayerDecorator{
     private final double price;
 
     public CreamLayer(Cake cake, String cream_type, double price) {
-        super(cake,LayerType.CREAM);
+        super(cake);
         this.price = price;
         this.cream_type = cream_type;
     }
@@ -14,7 +14,11 @@ public class CreamLayer extends LayerDecorator{
     public double getPrice() {return super.getPrice() + this.price;}
 
     @Override
+    public LayerType getLastType() {return LayerType.CREAM;}
+
+    @Override
     public String toString() {
-        return super.toString() + ", CreamLayer [" + this.cream_type + "]";
+        String s = super.toString();
+        return s.isEmpty() ? "CreamLayer [" + this.cream_type + "]" : s + ", CreamLayer [" + this.cream_type + "]";
     }
 }

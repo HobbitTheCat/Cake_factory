@@ -1,12 +1,10 @@
 package fr.ufrsciencestech.panier.Model.cake;
 
-public abstract class LayerDecorator implements Cake{
+public abstract class LayerDecorator implements Cake {
     protected Cake cake;
-    private LayerType type;
 
-    public LayerDecorator(Cake cake,LayerType type) {
+    public LayerDecorator(Cake cake) {
         this.cake = cake;
-        this.type = type;
     }
 
     @Override
@@ -20,7 +18,5 @@ public abstract class LayerDecorator implements Cake{
     }
 
     @Override
-    public LayerType getLastType(){
-        return this.type;
-    }
+    public LayerType getLastType() {return this.cake == null ? LayerType.CREAM : this.cake.getLastType();};
 }

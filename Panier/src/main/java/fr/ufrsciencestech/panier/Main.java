@@ -15,6 +15,10 @@ public class Main {
                 .build();
         System.out.println(cake.toString());
         System.out.println(cake.getPrice());
+
+        Cake cake1 = new CakeBuilder().addCreamLayer("Patissière",1.5).build();
+        System.out.println(cake1.toString());
+        System.out.println(cake1.getPrice());
     }
 
 }

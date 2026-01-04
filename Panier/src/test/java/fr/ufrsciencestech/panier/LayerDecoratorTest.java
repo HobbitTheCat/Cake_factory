@@ -1,6 +1,7 @@
 package fr.ufrsciencestech.panier;
 import fr.ufrsciencestech.panier.Model.cake.Cake;
 import fr.ufrsciencestech.panier.Model.cake.LayerDecorator;
+import fr.ufrsciencestech.panier.Model.cake.LayerType;
 
 public class LayerDecoratorTest extends LayerDecorator {
 
@@ -15,6 +16,9 @@ public class LayerDecoratorTest extends LayerDecorator {
     public String toString() {
         return super.toString() + ", with test ";
     }
+
+    @Override
+    public LayerType getLastType(){return LayerType.CREAM;}
 
     @Override
     public double getPrice() {
