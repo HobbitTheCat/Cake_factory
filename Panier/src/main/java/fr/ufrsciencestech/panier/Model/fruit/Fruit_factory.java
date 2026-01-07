@@ -10,7 +10,7 @@ package fr.ufrsciencestech.panier.Model.fruit;
  */
 public class Fruit_factory {
     
-    public static Fruit createFruit(String fruitType, double price, String origin){
+    public static SimpleFruit createFruit(String fruitType, double price, String origin){
         switch (fruitType){
             case "Orange": return new Orange(price, origin);
             case "Banana": return new Banana(price, origin);
@@ -22,7 +22,7 @@ public class Fruit_factory {
         }
     }
     
-    public static Fruit createFruit(String fruitType){
+    public static SimpleFruit createFruit(String fruitType){
         switch (fruitType){
             case "Orange": return new Orange();
             case "Banana": return new Banana();
