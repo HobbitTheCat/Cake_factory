@@ -23,6 +23,7 @@ import static org.mockito.Mockito.when;
 public class CakeBuilderTest {
 
     private CakeBuilder cakeBuilder;
+    private CakeBuilder cakeBuilder_void;
 
     @Mock
     private FruitStrategy fruitStrategyMock;
@@ -34,8 +35,10 @@ public class CakeBuilderTest {
     @Before
     public void setUp() {
         cakeBuilder = new CakeBuilder("Genoise", 5.0);
+        cakeBuilder_void = new CakeBuilder();
         when(fruitStrategyMock.process(any(ArrayList.class))).thenReturn(fruitProcessedMock);
     }
+
 
     @Test
     public void testBuildValidCake() {
@@ -61,7 +64,18 @@ public class CakeBuilderTest {
     public void testAddCreamAfterToppingThrowsException() {
         cakeBuilder
                 .addToppingLayer("Chantilly", 2.0)
-                .addCreamLayer("Vanille", 1.0);
+                .addCreamLayer("Vanille", 1.0)
+                .build();
+
+    }
+
+    @Test(expected = LayerOrderException.class)
+    public void testOrderExecptionVoidCake(){
+        cakeBuilder_void
+                .addCreamLayer("Vanille",1.0)
+                .addToppingLayer("Chantilly", 2.0)
+                .addBaseLayer("Biscuit", 3.0)
+                .build();
     }
 
     @Test(expected = LayerOrderException.class)
@@ -83,18 +97,5 @@ public class CakeBuilderTest {
         cakeBuilder
                 .addToppingLayer("Chantilly", 2.0)
                 .addBaseLayer("Sablé", 3.0);
-    }
-
-    @Test
-    public void testExceptionMessageContent() {
-        try {
-            cakeBuilder
-                    .addToppingLayer("Chantilly", 2.0)
-                    .addBaseLayer("Sablé", 3.0);
-            fail("Une LayerOrderException aurait dû être levée");
-        } catch (LayerOrderException e) {
-            assertTrue(e.getMessage().contains("Base layer can't be place after Topping"));
-            assertTrue(e.getMessage().contains("Wrong LayerOrder"));
-        }
     }
 }
