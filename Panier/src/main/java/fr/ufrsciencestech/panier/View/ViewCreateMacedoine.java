@@ -4,15 +4,17 @@
  */
 package fr.ufrsciencestech.panier.View;
 
+import fr.ufrsciencestech.panier.Model.strategy.*;
+import fr.ufrsciencestech.panier.Model.fruit.*;
+
 /**
  *
  * @author Ostronix
  */
 public class ViewCreateMacedoine extends javax.swing.JFrame {
 
-    /**
-     * Creates new form ViewCreateMacedoine
-     */
+    Macedoine macedoine;
+    
     public ViewCreateMacedoine() {
         initComponents();
         FillComboBox();
@@ -141,7 +143,9 @@ public class ViewCreateMacedoine extends javax.swing.JFrame {
     }//GEN-LAST:event_CBmacedoineActionPerformed
 
     private void BajouterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BajouterActionPerformed
-        // TODO add your handling code here:
+        if(macedoine == null){
+            macedoine = new Macedoine();
+        }
     }//GEN-LAST:event_BajouterActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
