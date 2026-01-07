@@ -14,7 +14,7 @@ public class LayerDecoratorTest extends LayerDecorator {
 
     @Override
     public String toString() {
-        return super.toString() + ", with test ";
+        return super.toString() + ", with test";
     }
 
     @Override
