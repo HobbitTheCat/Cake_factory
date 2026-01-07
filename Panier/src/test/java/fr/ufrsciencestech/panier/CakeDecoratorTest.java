@@ -13,12 +13,12 @@ public class CakeDecoratorTest {
 
         Cake mockCake = mock(Cake.class);
 
-        when(mockCake.toString()).thenReturn("Tarte test");
+        when(mockCake.toString()).thenReturn("Pie test");
         when(mockCake.getPrice()).thenReturn(2.0);
 
         LayerDecorator layer = new LayerDecoratorTest(mockCake, 2.3);
 
-        assertEquals("Tarte test, with test", layer.toString());
+        assertEquals("Pie test, with test", layer.toString());
         assertEquals(4.3, layer.getPrice());
 
         verify(mockCake, times(1)).toString();
@@ -26,17 +26,17 @@ public class CakeDecoratorTest {
     }
 
     @Test
-    public void testEmpilementDecorator() {
+    public void testStackDecorator() {
         Cake mockCake = mock(Cake.class);
 
-        when(mockCake.toString()).thenReturn("Tarte test");
+        when(mockCake.toString()).thenReturn("Pie test");
         when(mockCake.getPrice()).thenReturn(2.0);
 
         Cake firstLayer = new LayerDecoratorTest(mockCake, 2.3);
 
         Cake secondLayer = new LayerDecoratorTest(firstLayer, 3.0);
 
-        assertEquals("Tarte test, avec test , avec test", secondLayer.toString());
+        assertEquals("Pie test, with test, with test", secondLayer.toString());
         assertEquals(7.3, secondLayer.getPrice());
 
         verify(mockCake, times(1)).toString();
