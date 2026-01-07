@@ -17,6 +17,7 @@ public class Fruit_factory {
             case "Cherry": return new Cherry(price, origin);
             case "Pineapple": return new Pineapple(price, origin);
             case "Raspberry": return new Raspberry(price, origin);
+            case "Apple": return new Apple(price, origin);
             default: return new Orange();
         }
     }
@@ -28,6 +29,7 @@ public class Fruit_factory {
             case "Cherry": return new Cherry();
             case "Pineapple": return new Pineapple();
             case "Raspberry": return new Raspberry();
+            case "Apple": return new Apple();
             default: return new Orange();
         }
     }
