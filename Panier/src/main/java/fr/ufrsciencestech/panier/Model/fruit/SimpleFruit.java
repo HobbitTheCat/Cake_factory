@@ -4,7 +4,7 @@ package fr.ufrsciencestech.panier.Model.fruit;
 public abstract class SimpleFruit implements Fruit {
     protected double price_kilogram;
     protected String origin;
-
+    
     // Template method
     protected abstract String getDefaultOrigin();
     protected abstract double getDefaultPrice();
