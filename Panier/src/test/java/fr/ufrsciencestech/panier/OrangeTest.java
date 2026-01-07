@@ -13,7 +13,7 @@ public class  OrangeTest extends SimpleFruitTest {
     }
 
     @Test
-    void testBananaIsSeedless() {
+    void testOrangeIsSeedless() {
         Orange o = new Orange();
         assertFalse(o.isSeedless(), "Orange should always have seeds");
     }
