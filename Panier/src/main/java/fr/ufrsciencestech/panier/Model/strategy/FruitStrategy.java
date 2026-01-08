@@ -6,5 +6,5 @@ import fr.ufrsciencestech.panier.Model.fruit.SimpleFruit;
 import java.util.ArrayList;
 
 public interface FruitStrategy {
-    Fruit process(ArrayList<SimpleFruit> fruits);
+    Fruit process(ArrayList<Fruit> fruits);
 }
