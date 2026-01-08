@@ -2,8 +2,12 @@ package fr.ufrsciencestech.panier.Model;
 
 import fr.ufrsciencestech.panier.Model.fruit.Fruit;
 import fr.ufrsciencestech.panier.Model.fruit.Orange;
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  * Classe Panier stockant et gérant un ensemble de fruits (oranges, bananes, ...). Chaque panier possède une contenance maximale. 
  * @author roudet
@@ -13,6 +17,11 @@ import java.util.*;
 public class Basket {
     private ArrayList<Fruit> fruits;
     private final int capacity;
+    PropertyChangeSupport pcs = new PropertyChangeSupport(this);
+
+    
+
+
 
     public boolean isEmpty() {return fruits.isEmpty();}
     public boolean isFull() {return fruits.size() == capacity;}
@@ -52,30 +61,43 @@ public class Basket {
         }
         return total;
     }
+    
+    public void addObserver(PropertyChangeListener l) {
+        pcs.addPropertyChangeListener("content", l);
+    }
 
     public void add(Fruit fruit) throws PanierPleinException {
         if (this.isFull()) throw new PanierPleinException();
         this.fruits.add(fruit);
+        pcs.firePropertyChange("content", getNbFruits() - 1, getFruits().size());
     }
     public void add() throws PanierPleinException {
         if (this.isFull()) throw new PanierPleinException();
         this.fruits.add(new Orange());
+        pcs.firePropertyChange("content", getNbFruits() - 1, getFruits().size());
     }
 
     public void remove() throws PanierVideException {
         if (this.isEmpty()) throw new PanierVideException();
         this.getFruits().remove(this.getNbFruits()-1);
         // TODO Observer goes here
+        pcs.firePropertyChange("content", getNbFruits() +1, getFruits().size());
     }
-    private void remove(int i) {
+    public void remove(int i)throws PanierVideException {
+        if (this.isEmpty()) throw new PanierVideException();
         if (i < 0 || i >= this.getNbFruits()) throw new IndexOutOfBoundsException();
         this.fruits.remove(i);
+        pcs.firePropertyChange("content", getNbFruits() + 1, getFruits().size());
     }
 
     public void boycottOrigin(String country) {
         for (int i = this.getNbFruits()-1; i >= 0; i--) {
             if (this.getFruit(i).getOriginCountry().equals(country)) {
-                this.remove(i);
+                try {
+                    this.remove(i);
+                } catch (PanierVideException ex) {
+                    Logger.getLogger(Basket.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         }
     }

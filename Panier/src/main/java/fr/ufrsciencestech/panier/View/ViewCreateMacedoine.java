@@ -24,8 +24,23 @@ public class ViewCreateMacedoine extends javax.swing.JFrame {
     private void FillComboBox(){
         int n = ViewMenu.lst_instance.size();
         for(int i =0;i<n;i++){
-            CBmacedoine.addItem(ViewMenu.lst_instance.get(i).getClass().getName());
+            CBmacedoine.addItem(ViewMenu.lst_instance.get(i).getName());
         }
+    }
+    private void FillTextArea(){
+        int n = ViewMenu.lst_instance.size();
+        TAmacedoine.setText("Voici toutes les fruit dans la macedoine : \n");
+        TAmacedoine.append(macedoine.toString());
+    }
+    
+    private SimpleFruit Select(String nom){
+        int n = ViewMenu.lst_instance.size();
+        for(int i=0;i<n;i++){
+            if(ViewMenu.lst_instance.get(i).getClass().getName().equals(nom)){
+                return (SimpleFruit)ViewMenu.lst_instance.get(i);
+            }
+        }
+        return null;
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -44,6 +59,7 @@ public class ViewCreateMacedoine extends javax.swing.JFrame {
         TAmacedoine = new javax.swing.JTextArea();
         Bexit = new javax.swing.JButton();
         Bcreer = new javax.swing.JButton();
+        Brefresh = new javax.swing.JButton();
 
         jButton3.setBackground(new java.awt.Color(255, 0, 0));
         jButton3.setFont(new java.awt.Font("Segoe UI Symbol", 1, 14)); // NOI18N
@@ -94,12 +110,24 @@ public class ViewCreateMacedoine extends javax.swing.JFrame {
             }
         });
 
+        Brefresh.setBackground(new java.awt.Color(0, 51, 153));
+        Brefresh.setFont(new java.awt.Font("Segoe UI Symbol", 1, 14)); // NOI18N
+        Brefresh.setForeground(new java.awt.Color(255, 255, 255));
+        Brefresh.setText("⟳");
+        Brefresh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BrefreshActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(Brefresh)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Bexit))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -121,7 +149,9 @@ public class ViewCreateMacedoine extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(Bexit)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Bexit)
+                    .addComponent(Brefresh))
                 .addGap(1, 1, 1)
                 .addComponent(jLabel1)
                 .addGap(43, 43, 43)
@@ -143,22 +173,33 @@ public class ViewCreateMacedoine extends javax.swing.JFrame {
     }//GEN-LAST:event_CBmacedoineActionPerformed
 
     private void BajouterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BajouterActionPerformed
+        String fruit = (String)CBmacedoine.getSelectedItem();
         if(macedoine == null){
-            macedoine = new Macedoine();
+            macedoine = new Macedoine(Select(fruit));
         }
+        else{
+            macedoine.addFruit(Select(fruit));
+        }
+        FillTextArea();
     }//GEN-LAST:event_BajouterActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+       
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void BexitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BexitActionPerformed
-        // TODO add your handling code here:
+        setVisible(false);
     }//GEN-LAST:event_BexitActionPerformed
 
     private void BcreerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BcreerActionPerformed
-        // TODO add your handling code here:
+        ViewMenu.lst_instance.add(macedoine);
+        macedoine = null;
+        
     }//GEN-LAST:event_BcreerActionPerformed
+
+    private void BrefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BrefreshActionPerformed
+        FillComboBox();
+    }//GEN-LAST:event_BrefreshActionPerformed
 
     /**
      * @param args the command line arguments
@@ -199,6 +240,7 @@ public class ViewCreateMacedoine extends javax.swing.JFrame {
     private javax.swing.JButton Bajouter;
     private javax.swing.JButton Bcreer;
     private javax.swing.JButton Bexit;
+    private javax.swing.JButton Brefresh;
     private javax.swing.JComboBox<String> CBmacedoine;
     private javax.swing.JTextArea TAmacedoine;
     private javax.swing.JButton jButton3;

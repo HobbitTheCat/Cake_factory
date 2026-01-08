@@ -45,8 +45,10 @@ public class ViewCreateFruit extends javax.swing.JFrame {
         Bdefaut = new javax.swing.JButton();
         Bcreer = new javax.swing.JButton();
         Bexit = new javax.swing.JButton();
+        Brefresh = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocation(new java.awt.Point(400, 550));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel1.setText("Choisissez un fruit à créer");
@@ -85,6 +87,16 @@ public class ViewCreateFruit extends javax.swing.JFrame {
             }
         });
 
+        Brefresh.setBackground(new java.awt.Color(0, 51, 153));
+        Brefresh.setFont(new java.awt.Font("Segoe UI Symbol", 1, 14)); // NOI18N
+        Brefresh.setForeground(new java.awt.Color(255, 255, 255));
+        Brefresh.setText("⟳");
+        Brefresh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BrefreshActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -108,6 +120,8 @@ public class ViewCreateFruit extends javax.swing.JFrame {
                         .addGap(131, 131, 131))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Brefresh)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Bexit))
             .addGroup(layout.createSequentialGroup()
                 .addGap(99, 99, 99)
@@ -119,7 +133,9 @@ public class ViewCreateFruit extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(Bexit)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Bexit)
+                    .addComponent(Brefresh))
                 .addGap(21, 21, 21)
                 .addComponent(jLabel1)
                 .addGap(42, 42, 42)
@@ -148,7 +164,7 @@ public class ViewCreateFruit extends javax.swing.JFrame {
 
     private void BdefautActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BdefautActionPerformed
         String fruit = (String)CBfruit.getSelectedItem();
-        Fruit f = Fruit_factory.createFruit(fruit);
+        SimpleFruit f = Fruit_factory.createFruit(fruit);
         ViewMenu.lst_instance.add(f);
         CBfruit.removeAllItems();
         FillComboBox();
@@ -163,13 +179,17 @@ public class ViewCreateFruit extends javax.swing.JFrame {
     private void BcreerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BcreerActionPerformed
         String fruit = (String) CBfruit.getSelectedItem();
         int prix = (int)Sprix.getValue();
-        Fruit f = Fruit_factory.createFruit(fruit, prix, TForigine.getText());
+        SimpleFruit f = Fruit_factory.createFruit(fruit, prix, TForigine.getText());
         ViewMenu.lst_instance.add(f);
         CBfruit.removeAllItems();
         FillComboBox();
         TForigine.setText("");
         Sprix.setValue(0);
     }//GEN-LAST:event_BcreerActionPerformed
+
+    private void BrefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BrefreshActionPerformed
+        FillComboBox();
+    }//GEN-LAST:event_BrefreshActionPerformed
 
     /**
      * @param args the command line arguments
@@ -210,6 +230,7 @@ public class ViewCreateFruit extends javax.swing.JFrame {
     private javax.swing.JButton Bcreer;
     private javax.swing.JButton Bdefaut;
     private javax.swing.JButton Bexit;
+    private javax.swing.JButton Brefresh;
     private javax.swing.JComboBox<String> CBfruit;
     private javax.swing.JSpinner Sprix;
     private javax.swing.JTextField TForigine;

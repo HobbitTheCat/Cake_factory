@@ -11,9 +11,9 @@ import java.awt.event.ActionListener;
 
 
 public abstract class Controleur implements ActionListener{
-    protected Basket p;
+    protected Basket b;
     
-    public void setPanier(Basket p){
-        this.p = p;
+    public void setPanier(Basket b){
+        this.b = b;
     }
 }

@@ -1,6 +1,8 @@
 
 package fr.ufrsciencestech.panier.View;
 
+import fr.ufrsciencestech.panier.Controller.*;
+import fr.ufrsciencestech.panier.Model.Basket;
 import fr.ufrsciencestech.panier.Model.fruit.*;
 
 import java.io.File;
@@ -12,7 +14,7 @@ import java.util.logging.Logger;
 
 public class ViewMenu extends javax.swing.JFrame {
 
-    static List<SimpleFruit> lst_instance = new ArrayList<>();
+    public static List<Fruit> lst_instance = new ArrayList<>();
     static List<String> lst_fruit = new ArrayList<>();
     /**
      * Creates new form ViewMenu
@@ -141,7 +143,15 @@ public class ViewMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_BinstanceActionPerformed
 
     private void BpanierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BpanierActionPerformed
-        new ViewBasket().setVisible(true);
+        Basket b = new Basket(4);
+        ViewBasket vb = new ViewBasket();
+        ControleurPanier cs = new ControleurPanier();
+        cs.setPanier(b);
+        cs.setVue(vb);
+        b.addObserver(vb);
+        vb.addControleur(cs);
+        vb.setVisible(true);
+
     }//GEN-LAST:event_BpanierActionPerformed
 
     private void BcreationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BcreationActionPerformed

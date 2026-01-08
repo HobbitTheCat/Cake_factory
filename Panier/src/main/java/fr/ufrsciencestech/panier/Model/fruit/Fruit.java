@@ -4,6 +4,7 @@ public interface Fruit {
      boolean isSeedless();
      double getPrice();
      String getOriginCountry();
+     String getName();
 
      @Override
      String toString();

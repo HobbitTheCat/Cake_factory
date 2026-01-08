@@ -43,4 +43,7 @@ public class Macedoine implements Fruit {
         }
         return macedoine.toString();
     }
+    
+    @Override
+    public String getName(){return "Macedoine";}
 }
