@@ -5,9 +5,14 @@ import fr.ufrsciencestech.panier.Model.cake.CakeBuilder;
 import fr.ufrsciencestech.panier.Model.fruit.Banana;
 import fr.ufrsciencestech.panier.Model.fruit.Orange;
 import fr.ufrsciencestech.panier.Model.strategy.FruitSaladStrategy;
+import fr.ufrsciencestech.panier.View.ViewMenu;
 
 public class Main {
     public static void main(String args[]){
+        ViewMenu.main(args);
+    }
+
+    public static void CakeTest() {
         Cake cake = new CakeBuilder("Pâte Sablé",10.0)
                 .addCreamLayer("Patissière",1.5)
                 .addFruitLayer(new FruitSaladStrategy(),new Orange(),new Banana())

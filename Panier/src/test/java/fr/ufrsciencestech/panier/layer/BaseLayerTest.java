@@ -3,6 +3,7 @@ package fr.ufrsciencestech.panier.layer;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import static org.mockito.Mockito.when;
 import org.mockito.MockitoAnnotations;
@@ -10,7 +11,9 @@ import org.mockito.MockitoAnnotations;
 import fr.ufrsciencestech.panier.Model.cake.BaseLayer;
 import fr.ufrsciencestech.panier.Model.cake.LayerType;
 import fr.ufrsciencestech.panier.Model.cake.Cake;
+import org.mockito.junit.jupiter.MockitoExtension;
 
+@ExtendWith(MockitoExtension.class)
 class BaseLayerTest {
 
     @Mock
