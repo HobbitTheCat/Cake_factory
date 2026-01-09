@@ -1,6 +1,9 @@
 package fr.ufrsciencestech.panier.Model.fruit;
 
 
+import java.util.Collections;
+import java.util.List;
+
 public abstract class SimpleFruit implements Fruit {
     protected double price_kilogram;
     protected String origin;
@@ -43,4 +46,9 @@ public abstract class SimpleFruit implements Fruit {
 
     @Override
     public abstract  boolean isSeedless();
+
+    @Override
+    public List<SimpleFruit> getIngredients() {
+        return Collections.singletonList(this);
+    }
 }
