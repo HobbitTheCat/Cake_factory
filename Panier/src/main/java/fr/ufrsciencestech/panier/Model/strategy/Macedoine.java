@@ -4,6 +4,7 @@ import fr.ufrsciencestech.panier.Model.fruit.Fruit;
 import fr.ufrsciencestech.panier.Model.fruit.SimpleFruit;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Macedoine implements Fruit {
     private final ArrayList<SimpleFruit> fruits;
@@ -35,7 +36,7 @@ public class Macedoine implements Fruit {
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         StringBuilder macedoine = new StringBuilder();
         macedoine.append("Macedoine de:\n");
         for (Fruit fruit : this.fruits) {
@@ -43,7 +44,13 @@ public class Macedoine implements Fruit {
         }
         return macedoine.toString();
     }
-    
+
     @Override
     public String getName(){return "Macedoine";}
+    
+    @Override
+    public List<SimpleFruit> getIngredients(){
+        return new ArrayList<>(this.fruits);
+    }
+
 }

@@ -6,13 +6,19 @@ import java.util.ArrayList;
 
 public class FruitSaladStrategy implements FruitStrategy{
     @Override
-    public Fruit process(ArrayList<SimpleFruit> fruits) {
+    public Fruit process(ArrayList<Fruit> fruits) {
         if (fruits == null || fruits.isEmpty()) {
             throw new IllegalArgumentException("Empty fruit list");
         }
-        Macedoine macedoine = new Macedoine(fruits.get(0));
+
+        ArrayList<SimpleFruit> flatList = new ArrayList<>();
+        for (Fruit fruit : fruits) {
+            flatList.addAll(fruit.getIngredients());
+        }
+
+        Macedoine macedoine = new Macedoine(flatList.get(0));
         for (int i = 1; i < fruits.size(); i++) {
-            macedoine.addFruit(fruits.get(i));
+            macedoine.addFruit(flatList.get(i));
         }
         return macedoine;
     }
