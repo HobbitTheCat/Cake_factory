@@ -8,6 +8,7 @@ import static org.mockito.Mockito.when;
 import org.mockito.MockitoAnnotations;
 
 import fr.ufrsciencestech.panier.Model.cake.BaseLayer;
+import fr.ufrsciencestech.panier.Model.cake.LayerType;
 import fr.ufrsciencestech.panier.Model.cake.Cake;
 
 class BaseLayerTest {
@@ -15,26 +16,21 @@ class BaseLayerTest {
     @Mock
     private Cake mockCake;
 
-    @BeforeEach
-    void setUp() {
-        MockitoAnnotations.openMocks(this);
-    }
-
     @Test
-    void testtoString() {
+    void testToStringWithParent() {
         // Arrange
-        when(mockCake.toString()).thenReturn("Tarte aux fruits");
+        when(mockCake.toString()).thenReturn("PreviousLayer");
         BaseLayer baseLayer = new BaseLayer(mockCake, "pâte sablée", 2.5);
 
         // Act
         String description = baseLayer.toString();
 
         // Assert
-        assertEquals("Tarte aux fruits, base pâte sablée", description);
+        assertEquals("PreviousLayer, BaseLayer [pâte sablée]", description);
     }
 
     @Test
-    void testgetPrice() {
+    void testGetPrice() {
         // Arrange
         when(mockCake.getPrice()).thenReturn(10.0);
         BaseLayer baseLayer = new BaseLayer(mockCake, "pâte sablée", 2.5);
@@ -44,6 +40,21 @@ class BaseLayerTest {
 
         // Assert
         assertEquals(12.5, cost, 0.001);
+    }
+
+    @Test
+    void testGetLastType() {
+        // Arrange
+        BaseLayer baseLayer = new BaseLayer(mockCake, "pâte sablée", 2.5);
+
+        // Act & Assert
+        assertEquals(LayerType.BASE, baseLayer.getLastType());
+    }
+
+    @Test
+    void testToStringAsFirstLayer() {
+        BaseLayer baseLayer = new BaseLayer(null, "pâte sablée", 2.5);
+        assertEquals("BaseLayer [pâte sablée]", baseLayer.toString());
     }
 
     @Test
