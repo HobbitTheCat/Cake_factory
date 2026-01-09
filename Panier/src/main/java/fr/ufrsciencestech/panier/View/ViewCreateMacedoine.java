@@ -28,19 +28,27 @@ public class ViewCreateMacedoine extends javax.swing.JFrame {
         }
     }
     private void FillTextArea(){
-        int n = ViewMenu.lst_instance.size();
-        TAmacedoine.setText("Voici toutes les fruit dans la macedoine : \n");
-        TAmacedoine.append(macedoine.toString());
+        if(macedoine == null){
+            TAmacedoine.setText("");
+        }
+        else{
+            int n = ViewMenu.lst_instance.size();
+            TAmacedoine.setText("Voici toutes les fruit dans la macedoine : \n");
+            TAmacedoine.append(macedoine.toString());
+        }
+        
     }
     
-    private SimpleFruit Select(String nom){
+    private Fruit Select(String nom){
         int n = ViewMenu.lst_instance.size();
+        System.out.println(n);
         for(int i=0;i<n;i++){
-            if(ViewMenu.lst_instance.get(i).getClass().getName().equals(nom)){
-                return (SimpleFruit)ViewMenu.lst_instance.get(i);
+            System.out.println(ViewMenu.lst_instance.get(i).getName());
+            if(ViewMenu.lst_instance.get(i).getName().equals(nom)){
+                return ViewMenu.lst_instance.get(i);
             }
         }
-        return null;
+        return new Fruit_factory().createFruit("");
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -174,11 +182,13 @@ public class ViewCreateMacedoine extends javax.swing.JFrame {
 
     private void BajouterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BajouterActionPerformed
         String fruit = (String)CBmacedoine.getSelectedItem();
+        int n = ViewMenu.lst_instance.size();
+        System.out.println(n);
         if(macedoine == null){
-            macedoine = new Macedoine(Select(fruit));
+            macedoine = new Macedoine(Select(fruit).getIngredients().get(0));
         }
         else{
-            macedoine.addFruit(Select(fruit));
+            macedoine.addFruit(Select(fruit).getIngredients().get(0));
         }
         FillTextArea();
     }//GEN-LAST:event_BajouterActionPerformed
@@ -194,6 +204,8 @@ public class ViewCreateMacedoine extends javax.swing.JFrame {
     private void BcreerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BcreerActionPerformed
         ViewMenu.lst_instance.add(macedoine);
         macedoine = null;
+        FillTextArea();
+        FillComboBox();
         
     }//GEN-LAST:event_BcreerActionPerformed
 

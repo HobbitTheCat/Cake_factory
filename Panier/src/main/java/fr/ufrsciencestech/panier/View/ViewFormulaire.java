@@ -38,7 +38,7 @@ public class ViewFormulaire extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel1.setText("Que voulez-vous créer ?");
 
-        Tarte.setText("Fruit composé");
+        Tarte.setText("Tarte");
         Tarte.setMargin(new java.awt.Insets(2, 7, 3, 7));
         Tarte.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
