@@ -5,14 +5,16 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import fr.ufrsciencestech.panier.Model.cake.LayerType;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import static org.mockito.Mockito.when;
 import org.mockito.MockitoAnnotations;
 
 import fr.ufrsciencestech.panier.Model.cake.Cake;
 import fr.ufrsciencestech.panier.Model.cake.ToppingLayer;
+import org.mockito.junit.jupiter.MockitoExtension;
 
-//@ExtendWith(MockitoExtension.class)
+@ExtendWith(MockitoExtension.class)
 class ToppingLayerTest {
 
     @Mock
