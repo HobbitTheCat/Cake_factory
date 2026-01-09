@@ -16,4 +16,7 @@ public class Cherry extends SimpleFruit {
 
     @Override
     public boolean isSeedless() {return false;}
+    
+    @Override
+    public String getName(){return "Cherry";}
 }

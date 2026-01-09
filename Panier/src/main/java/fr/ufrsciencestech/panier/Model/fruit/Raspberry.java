@@ -25,4 +25,7 @@ public class Raspberry extends SimpleFruit {
 
     @Override
     public boolean isSeedless() {return true;}
+    
+    @Override
+    public String getName(){return "Raspberry";}
 }

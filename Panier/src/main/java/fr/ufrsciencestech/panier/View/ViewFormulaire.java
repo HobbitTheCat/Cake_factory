@@ -27,21 +27,22 @@ public class ViewFormulaire extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        Bfruitcompose = new javax.swing.JButton();
+        Tarte = new javax.swing.JButton();
         Bexit = new javax.swing.JButton();
         Bfruit = new javax.swing.JButton();
         Bmacedoine = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocation(new java.awt.Point(0, 550));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel1.setText("Que voulez-vous créer ?");
 
-        Bfruitcompose.setText("Fruit composé");
-        Bfruitcompose.setMargin(new java.awt.Insets(2, 7, 3, 7));
-        Bfruitcompose.addActionListener(new java.awt.event.ActionListener() {
+        Tarte.setText("Fruit composé");
+        Tarte.setMargin(new java.awt.Insets(2, 7, 3, 7));
+        Tarte.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BfruitcomposeActionPerformed(evt);
+                TarteActionPerformed(evt);
             }
         });
 
@@ -88,7 +89,7 @@ public class ViewFormulaire extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(Bfruit, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(Bmacedoine, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Bfruitcompose, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(Tarte, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(110, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -102,7 +103,7 @@ public class ViewFormulaire extends javax.swing.JFrame {
                 .addGap(42, 42, 42)
                 .addComponent(Bmacedoine, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40)
-                .addComponent(Bfruitcompose, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Tarte, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(98, 98, 98))
         );
 
@@ -113,9 +114,9 @@ public class ViewFormulaire extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_BexitActionPerformed
 
-    private void BfruitcomposeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BfruitcomposeActionPerformed
-        new ViewCreateComposite().setVisible(true);
-    }//GEN-LAST:event_BfruitcomposeActionPerformed
+    private void TarteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TarteActionPerformed
+        new ViewTarte().setVisible(true);
+    }//GEN-LAST:event_TarteActionPerformed
 
     private void BfruitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BfruitActionPerformed
         new ViewCreateFruit().setVisible(true);
@@ -163,8 +164,8 @@ public class ViewFormulaire extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Bexit;
     private javax.swing.JButton Bfruit;
-    private javax.swing.JButton Bfruitcompose;
     private javax.swing.JButton Bmacedoine;
+    private javax.swing.JButton Tarte;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

@@ -20,4 +20,7 @@ public class Apple extends SimpleFruit {
 
     @Override
     public boolean isSeedless() {return false;}
+    
+    @Override
+    public String getName(){return "Apple";}
 }

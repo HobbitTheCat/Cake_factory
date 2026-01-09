@@ -46,7 +46,11 @@ public class Macedoine implements Fruit {
     }
 
     @Override
+    public String getName(){return "Macedoine";}
+    
+    @Override
     public List<SimpleFruit> getIngredients(){
         return new ArrayList<>(this.fruits);
     }
+
 }

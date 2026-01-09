@@ -3,6 +3,9 @@
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="location" type="java.awt.Point" editor="org.netbeans.beaninfo.editors.PointEditor">
+      <Point value="[0, 550]"/>
+    </Property>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -38,7 +41,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="Bfruit" min="-2" pref="99" max="-2" attributes="0"/>
                           <Component id="Bmacedoine" min="-2" pref="99" max="-2" attributes="0"/>
-                          <Component id="Bfruitcompose" alignment="0" min="-2" pref="99" max="-2" attributes="0"/>
+                          <Component id="Tarte" alignment="0" min="-2" pref="99" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -57,7 +60,7 @@
               <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
               <Component id="Bmacedoine" min="-2" pref="34" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-              <Component id="Bfruitcompose" min="-2" pref="34" max="-2" attributes="0"/>
+              <Component id="Tarte" min="-2" pref="34" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="98" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -72,7 +75,7 @@
         <Property name="text" type="java.lang.String" value="Que voulez-vous cr&#xe9;er ?"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="Bfruitcompose">
+    <Component class="javax.swing.JButton" name="Tarte">
       <Properties>
         <Property name="text" type="java.lang.String" value="Fruit compos&#xe9;"/>
         <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
@@ -80,7 +83,7 @@
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BfruitcomposeActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TarteActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="Bexit">

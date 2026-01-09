@@ -11,6 +11,9 @@ public abstract class SimpleFruit implements Fruit {
     // Template method
     protected abstract String getDefaultOrigin();
     protected abstract double getDefaultPrice();
+    
+    @Override
+    public abstract String getName();
 
     public SimpleFruit() {
         this.setPrice(getDefaultPrice());
