@@ -73,7 +73,7 @@ class BaseLayerTest {
         double cost = baseLayer.getPrice();
 
         // Assert
-        assertEquals("Tarte aux fruits, base pâte sablée", desc);
+        assertEquals("Tarte aux fruits, BaseLayer [pâte sablée]", desc);
         assertEquals(12.5, cost, 0.001);
     }
 }
