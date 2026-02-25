@@ -72,6 +72,7 @@ Cela permettra d'éviter les conflits.
 
 ### Règles
 - Un commit = une modification logique
+- Ne pas faire de `git push -f main` sans raison - cela force l'ajout des modifications ce qui peut compmromettre le projet
 
 ### Commandes utiles
 `git add <FILES>` # ajoute des fichiers
