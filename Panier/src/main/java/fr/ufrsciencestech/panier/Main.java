@@ -13,6 +13,7 @@ public class Main {
     }
 
     public static void CakeTest() {
+	//Création d'une tarte avec  une crème patissière , pépite de chocolat ,avec une mélange de banane et d'orange .
         Cake cake = new CakeBuilder("Pâte Sablé",10.0)
                 .addCreamLayer("Patissière",1.5)
                 .addFruitLayer(new FruitSaladStrategy(),new Orange(),new Banana())
