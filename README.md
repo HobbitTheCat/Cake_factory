@@ -14,11 +14,10 @@ Le cœur de ce projet réside dans l'application des processus théoriques de ge
 * **Équipe de Développement** : Équipe pluridisciplinaire auto-organisée appliquant les standards de qualité technique.
 
 ### 🔄 Cycle de Vie (Sprints)
-Nous fonctionnons par itérations de [Durée, ex: 2 semaines], incluant les rituels suivants :
+Nous fonctionnons par itérations de 1 semaine, incluant les rituels suivants :
 * **Sprint Planning** : Sélection des items du backlog et définition de l'objectif du Sprint.
-* **Daily Scrum** : Alignement quotidien de l'équipe et suivi de l'avancement via un tableau Kanban/Scrum.
 * **Sprint Review** : Démonstration des incréments logiciels terminés aux parties prenantes.
-* **Sprint Retrospective** : Analyse de notre processus interne pour une amélioration continue (KPT : Keep, Problem, Try).
+* **Sprint Retrospective** : Analyse de notre processus interne pour une amélioration continue.
 
 ---
 
@@ -34,19 +33,30 @@ Nous respectons les cinq piliers SOLID pour assurer la pérennité du code :
 * **D**ependency Inversion : Découplage des modules via l'injection de dépendances.
 
 ### Design Patterns Appliqués
-Le projet implémente plusieurs patrons de conception pour résoudre des problèmes récurrents :
+Le projet implémente plusieurs patrons de conception pour résoudre des problèmes récurrents comme par exemple :
 * **Factory / Abstract Factory** : Pour la création dynamique des différents types de gâteaux.
 * **Strategy** : Pour isoler les différents modes de cuisson ou de tarification.
 * **Observer** : Pour notifier les différents services (stock, livraison) lors de la finalisation d'une commande.
 * **Decorator** : Pour l'ajout dynamique de toppings ou d'options sans modifier les classes de base.
+* **Build** : Pour simplifier la création final de l'object (DSL).
+* **Bridge** : Pour inclure la description des méthodes de la productuion de la tarte.
+* **Composite** : Pour créer une hiérarchie.
+* **Template** : Pour simplifier l'écriture du code.
+
+Nous avons un total donc 9 Design Pattern pour ce projet.
+
+---
+
+## 📊 Maquette IHM
+![Maquette IHM](https://github.com/HobbitTheCat/Cake_factory/blob/main/img/maquette.png)
 
 ---
 
 ## 🛠️ Qualité Logicielle & Outillage
 
-* **Gestion de version** : Git avec workflow *Gitflow* (branches `feature/`, `develop`, `main`).
+* **Gestion de version** : Git (Gitlab) avec workflow *Gitflow* (branches `feature/`, `develop`, `main`).
 * **Tests** : Approche TDD (Test Driven Development) pour garantir une couverture de tests unitaires et d'intégration maximale.
-* **Documentation** : Modélisation UML (Diagrammes de classes, de séquences et de cas d'utilisation) servant de socle avant chaque implémentation.
+* **Documentation** : Modélisation UML (Diagrammes de classes, de séquences et de cas d'utilisation) servant de socle avant chaque implémentation, Diagramme de PERT et Diagramme de GANTT.
 
 ---
 
@@ -57,3 +67,4 @@ Le projet implémente plusieurs patrons de conception pour résoudre des problè
 * [Enzo Pitoiset](https://github.com/EnzoPit) - Développeur
 * [Nicolas Schweblen] - Développeur
 * [Louis Ythier] - Développeur
+
