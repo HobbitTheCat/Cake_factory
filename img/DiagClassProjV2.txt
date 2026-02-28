@@ -1,0 +1,109 @@
+---
+config:
+  layout: elk
+---
+classDiagram
+    PieBuilder -- Pie
+    Pie <|.. LayerDecorator
+    CreamLayer--|>LayerDecorator
+    BaseLayer--|>LayerDecorator
+    FruitLayer--|>LayerDecorator
+    ToppingLayer--|>LayerDecorator
+    Fruit -- FruitLayer
+    FruitSimple -- FruitFactory
+    OrangeFactory --> FruitFactory
+    Fruit <|.. FruitSimple
+    Macedoine--|>FruitSimple
+    FruitSimple--o Macedoine
+    Orange --|> FruitSimple
+    FruitSaladStrat ..|> FruitStrategy
+    FruitSaladStrat -- Macedoine
+    Carameliser ..|> FruitStrategy
+    class PieBuilder{
+        -Pie pie
+        +PieBuilder(Pie pie)
+        +PieBuilder addcream(String type,Double cost)
+        +PieBuilder addBase(String type, Double cost)
+        +PieBuilder addFruit([Fruit] fruit PostProcess strat)
+        +PieBuilder addTopping(String type, Double cost)
+        +PieBuild()
+    }
+    class Pie {
+        String getDesc()
+        Double getCost()
+    }
+    <<interface>> Pie
+    class LayerDecorator{
+        #Pie pie;
+        +LayerDecorator(Pie pie,String type)
+        +String getDesc()*
+        +Double getCost()*
+    }
+    <<abstract>> LayerDecorator
+    class CreamLayer{
+        -String creamType
+        -Double cost
+        +CreamLayer(Pie pie)
+        +String getDesc()
+        +Double getCost()
+    }
+    class BaseLayer{
+        -Base base
+        +BaseLayer(Pie pie,String type)
+        +String getDesc()
+        +Double getCost()
+    }
+    class FruitLayer{
+        -Fruit processedFruit
+        +FruitLayer(Pie pie,Fruit fruit)
+        +String getDesc()
+        +Double getCost()
+    }
+    class ToppingLayer{
+        -String topping
+        -Double cost
+        +ToppingLayer(Pie pie, Topping top, double cost)
+        +String getDesc()
+        +Double getCost()
+    }
+    class Fruit{
+        Bool isSeedless()
+        Double getCost()
+        String getdesc()
+        Bool Equals(Fruit fruit)
+    }
+    <<interface>> Fruit
+    class FruitFactory{
+    }
+    <<abstract>> FruitFactory
+    class OrangeFactory{
+    }
+    class FruitSimple{
+        -Double prix
+        -String origine
+        Bool isSeedless()
+        Double getCost()
+        String getDesc()
+        Bool Equals(Fruit fruit)
+    }
+    <<abstract>> FruitSimple
+    class Macedoine{
+        -ArrayList Fruit
+        -Bool seedless
+        +Macedoine()
+        +addFruit(Fruit fruit)
+        +toString()
+        +getCost()
+    }
+    class Orange{
+    }
+    class FruitStrategy{
+        Fruit Process(List)
+    }
+    <<interface>> FruitStrategy
+    class FruitSaladStrat{
+        Fruit Process(List Fruit)
+    }
+    class Carameliser{
+        +Fruit Process(List Fruit)
+    }
