@@ -65,6 +65,7 @@ Nous avons un total donc 9 Design Pattern pour ce projet.
 * [Egor Semenov](https://github.com/HobbitTheCat) - Product Owner
 * [Kelian Texeira De Melo](https://github.com/KelianTDM) - Développeur
 * [Enzo Pitoiset](https://github.com/EnzoPit) - Développeur
-* [Nicolas Schweblen] - Développeur
-* [Louis Ythier] - Développeur
+* [Nicolas Schweblen]() - Développeur
+* [Louis Ythier]() - Développeur
+
 
